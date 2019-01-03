@@ -1,9 +1,10 @@
-Package: spOngEbOB
+Package: spongebob
 Type: Package
-Title: whAT tHE pacKAGe DOeS
+Title: spOngEboB-CASe CoNVertOR
 Version: 0.1
-Date: 2018-12-21
+Date: 2019-01-02
 Author: Jay Qi
 Maintainer: Jay Qi <jayqi@users.noreply.github.com>
-Description: moRE deTAIls AbouT whAt tHe pacKAge doEs.
-License: GPL (>= 2)
+Description: a PaCKAge tHAt CoNVErtS ChaRaCTer StRINgs TO spONGebOB caSE.
+License: BSD_3_clause + file LICENSE
+RoxygenNote: 6.1.1

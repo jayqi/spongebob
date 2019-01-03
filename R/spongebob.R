@@ -1,4 +1,9 @@
-
+#' @title sPOnGEBoB-caSE cONVersIon
+#' @name tospongebob
+#' @description trAnSLaTe ChARAcTers IN chARaCter veCToRS tO sPONgebOB caSe.
+#' @param x a ChaRActeR vECtOr.
+#' @return a CharAcTeR VECtOR oF THe SamE LeNGTh AS \code{x}
+#' @export
 tospongebob <- function(x) {
     vapply(
         x
