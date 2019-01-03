@@ -15,3 +15,11 @@ a CharAcTeR VECtOR oF THe SamE LeNGTh AS \code{x}
 \description{
 trAnSLaTe ChARAcTers IN chARaCter veCToRS tO sPONgebOB caSe.
 }
+\examples{
+tospongebob("spongebob-case conversion")
+tospongebob(x = c(
+    "translate characters in character vectors to spongebob case.",
+    "a character vector.",
+    "a character vector of the same length as"
+))
+}
