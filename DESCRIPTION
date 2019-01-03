@@ -5,6 +5,8 @@ Version: 0.1
 Date: 2019-01-02
 Author: Jay Qi
 Maintainer: Jay Qi <jayqi@users.noreply.github.com>
-Description: a PaCKAge tHAt CoNVErtS ChaRaCTer StRINgs TO spONGebOB caSE.
+Description: A PaCKAge tHAt CoNVErtS ChaRaCTer StRINgs TO spONGebOB caSE.
+Suggests:
+    testthat
 License: BSD_3_clause + file LICENSE
 RoxygenNote: 6.1.1
