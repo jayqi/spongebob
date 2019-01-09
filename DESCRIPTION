@@ -4,7 +4,7 @@ Title: Spongebob-Case Converter : spOngEboB-CASe CoNVertOR
 Version: 0.1
 Author: Jay Qi
 Maintainer: Jay Qi <jayqi.opensource@gmail.com>
-Description: A PaCKAge tHAt CoNVErtS ChaRaCTer StRINgs TO spONGebOB caSE. a PaCKAge tHAt CoNVErtS ChaRaCTer StRINgs TO spONGebOB caSE.
+Description: Convert character strings to Spongebob case. CoNVErt ChaRaCTer StRINgs TO spONGebOB caSE.
 Suggests:
     testthat
 License: BSD_3_clause + file LICENSE
