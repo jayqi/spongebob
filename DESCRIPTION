@@ -1,11 +1,10 @@
 Package: spongebob
 Type: Package
-Title: spOngEboB-CASe CoNVertOR
+Title: Spongebob-Case Converter : spOngEboB-CASe CoNVertOR
 Version: 0.1
-Date: 2019-01-02
 Author: Jay Qi
-Maintainer: Jay Qi <jayqi@users.noreply.github.com>
-Description: A PaCKAge tHAt CoNVErtS ChaRaCTer StRINgs TO spONGebOB caSE.
+Maintainer: Jay Qi <jayqi.opensource@gmail.com>
+Description: A PaCKAge tHAt CoNVErtS ChaRaCTer StRINgs TO spONGebOB caSE. a PaCKAge tHAt CoNVErtS ChaRaCTer StRINgs TO spONGebOB caSE.
 Suggests:
     testthat
 License: BSD_3_clause + file LICENSE
