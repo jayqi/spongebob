@@ -2,10 +2,15 @@ Package: spongebob
 Type: Package
 Title: Spongebob-Case Converter : spOngEboB-CASe CoNVertOR
 Version: 0.1
-Author: Jay Qi
+Authors@R: c(
+    person("Jay", "Qi", email = "jay.qi@uptake.com", role = c("aut", "cre"))
+    )
 Maintainer: Jay Qi <jayqi.opensource@gmail.com>
-Description: Convert character strings to Spongebob case. CoNVErt ChaRaCTer StRINgs TO spONGebOB caSE.
+Description: Convert character strings to Spongebob case. CoNVErt ChaRaCTer 
+             StRINgs TO spONGebOB caSE.
 Suggests:
     testthat
 License: BSD_3_clause + file LICENSE
+URL: https://github.com/jayqi/spongebob
+BugReports: https://github.com/jayqi/spongebob/issues
 RoxygenNote: 6.1.1
