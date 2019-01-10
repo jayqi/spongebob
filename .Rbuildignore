@@ -7,3 +7,6 @@
 # RStudio files
 ^.*\.Rproj$
 ^\.Rproj\.user$
+
+# Other
+^.travis\.yml$
