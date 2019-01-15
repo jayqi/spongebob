@@ -34,17 +34,15 @@ tospongebob <- function(x) {
             # Generate a random sequence of 1-, 2-, or 3-length subsequences
             # that sum up to the number of alphabetic characters
             # We will alternate casing of these
-            lengthSeq <- {
-                seq <- c()
-                while (sum(seq) < length(alphaInds)) {
-                    nextval <- sample(1:3, 1, prob = c(0.4, 0.35, 0.25))
-                    if (sum(seq) + nextval <= length(alphaInds)) {
-                        seq <- c(seq, nextval)
-                    }
+            phi <- (1 + sqrt(5))/2 # Golden ratio
+            probVec <- c(0.5, 0.5/phi, 0.5/phi^2) # sums to 1
+            lengthSeq <- c()
+            while (sum(lengthSeq) < length(alphaInds)) {
+                nextval <- sample(1:3, 1, prob = probVec)
+                if (sum(lengthSeq) + nextval <= length(alphaInds)) {
+                    lengthSeq <- c(lengthSeq, nextval)
                 }
-                seq
             }
-
 
             # Iterating through the generated subsquences
             lower <- sample(c(TRUE, FALSE), 1) # Initialize starting case
@@ -67,8 +65,9 @@ tospongebob <- function(x) {
             }
 
             return(paste(chars, collapse = ""))
-        }
-        , character(1)
+        } # end FUN for one string
+
+        , FUN.VALUE = character(1)
         , USE.NAMES = FALSE
     )
 }
