@@ -2,24 +2,28 @@
 % Please edit documentation in R/spongebob.R
 \name{tospongebob}
 \alias{tospongebob}
-\title{sPOnGEBoB-caSE cONVersIon}
+\title{Spongebob-Case Conversion : sPOngEBOb-CasE cOnVErsIoN}
 \usage{
 tospongebob(x)
 }
 \arguments{
-\item{x}{a ChaRActeR vECtOr.}
+\item{x}{a character vector. A CHarACTer vEcToR.}
 }
 \value{
-a CharAcTeR VECtOR oF THe SamE LeNGTh AS \code{x}
+A character vector of the same length as \code{x}.
+
+a ChaRaCteR vecTor OF The SAme LenGth As \code{x}.
 }
 \description{
-trAnSLaTe ChARAcTers IN chARaCter veCToRS tO sPONgebOB caSe.
+Translate character vectors to spongebob case.
+
+trAnSLatE ChaRacTeR veCtOrS To SponGebOB CaSE
 }
 \examples{
-tospongebob("spongebob-case conversion")
+tospongebob("Spongebob-Case Conversion")
 tospongebob(x = c(
-    "translate characters in character vectors to spongebob case.",
+    "Translate character vectors to spongebob case.",
     "a character vector.",
-    "a character vector of the same length as"
+    "A character vector of the same length as"
 ))
 }

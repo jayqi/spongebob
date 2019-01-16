@@ -1,14 +1,18 @@
-#' @title sPOnGEBoB-caSE cONVersIon
+#' @title Spongebob-Case Conversion : sPOngEBOb-CasE cOnVErsIoN
 #' @name tospongebob
-#' @description trAnSLaTe ChARAcTers IN chARaCter veCToRS tO sPONgebOB caSe.
-#' @param x a ChaRActeR vECtOr.
-#' @return a CharAcTeR VECtOR oF THe SamE LeNGTh AS \code{x}.
+#' @description Translate character vectors to spongebob case.
+#'
+#' trAnSLatE ChaRacTeR veCtOrS To SponGebOB CaSE
+#' @param x a character vector. A CHarACTer vEcToR.
+#' @return A character vector of the same length as \code{x}.
+#'
+#' a ChaRaCteR vecTor OF The SAme LenGth As \code{x}.
 #' @examples
-#' tospongebob("spongebob-case conversion")
+#' tospongebob("Spongebob-Case Conversion")
 #' tospongebob(x = c(
-#'     "translate characters in character vectors to spongebob case.",
+#'     "Translate character vectors to spongebob case.",
 #'     "a character vector.",
-#'     "a character vector of the same length as"
+#'     "A character vector of the same length as"
 #' ))
 #' @export
 tospongebob <- function(x) {
