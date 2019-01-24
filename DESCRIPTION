@@ -1,7 +1,7 @@
 Package: spongebob
 Type: Package
 Title: Spongebob-Case Converter : spOngEboB-CASe CoNVertOR
-Version: 0.1
+Version: 0.2.0
 Authors@R: c(
     person("Jay", "Qi", email = "jayqi.opensource@gmail.com", role = c("aut", "cre"))
     )
