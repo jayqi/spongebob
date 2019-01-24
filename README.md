@@ -12,9 +12,9 @@ insPIreD bY A [twiTTeR CoNVErsaTIon StArtED By @jONgAllOwaY](https://twitter.com
 
 ## Installation. inSTAllATIoN.
 
-You can get `spongebob` from [CRAN](https://cran.r-project.org/web/packages/spongebob/):
+You can get `spongebob` from [CRAN](https://CRAN.R-project.org/package=spongebob):
 
-YoU cAn GeT `spongebob` FrOM [CRAn](https://cran.r-project.org/web/packages/spongebob/):
+YoU cAn GeT `spongebob` FrOM [CRAn](https://CRAN.R-project.org/package=spongebob):
 
 ``` r
 install.packages('spongebob')
