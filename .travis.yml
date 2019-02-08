@@ -2,18 +2,24 @@ language: r
 
 jobs:
   include:
-  # Primary test
+  # Primary test for all builds
   - r: release
     os: linux
     after_success:
     - Rscript -e 'install.packages("covr"); covr::codecov()'
-  # Secondary tests on merge
+  # Secondary tests on merge (push)
   - r: devel
     os: linux
-    if: branch = master
+    if: type = push
   - r: release
     os: osx
-    if: branch = master
+    if: type = push
+
+# Whitelist to only do push builds on master branch
+# https://stackoverflow.com/a/31882307
+branches:
+  only:
+    - master
 
 matrix:
   fast_finish: true
