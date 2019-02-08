@@ -10,3 +10,4 @@
 
 # Other
 ^.travis\.yml$
+^cran-comments\.md$

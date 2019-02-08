@@ -1,13 +1,28 @@
-language: R
+language: r
+
+jobs:
+  include:
+  # Primary test for all builds
+  - r: release
+    os: linux
+    after_success:
+    - Rscript -e 'install.packages("covr"); covr::codecov()'
+  # Secondary tests on merge (push)
+  - r: devel
+    os: linux
+    if: type = push
+  - r: release
+    os: osx
+    if: type = push
+
+# Whitelist to only do push builds on master branch
+# https://stackoverflow.com/a/31882307
+branches:
+  only:
+    - master
+
+matrix:
+  fast_finish: true
+
 cache: packages
 warnings_are_errors: true
-
-os:
-    - linux
-
-before_install:
-    - Rscript -e "install.packages('roxygen2', repos = 'http://cran.rstudio.org')"
-    - Rscript -e "install.packages('devtools', repos = 'http://cran.rstudio.org')"
-
-after_success:
-    - Rscript -e 'install.packages("covr"); covr::codecov()'
