@@ -1,19 +1,23 @@
 # CRAN Submission History
 
-# v0.2.0.9000
+# v0.3.0
 
 ## Testing
 
 ### Test Environments
 
-- Local macOS, R 3.4.3
+- Local macOS, R 3.5.2
 - Travis CI, Linux: R release, R devel
 - Travis CI, OS X: R release
 - Appveyor, Windows Server 2012: R release
 
 ### R CMD check results
 
-## Submission on ...
+0 ERRORs | 0 WARNINGs | 0 NOTEs
+
+## Submission on 2019-02-09
+
+...
 
 # v0.2.0
 
