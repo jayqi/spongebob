@@ -9,5 +9,6 @@
 ^\.Rproj\.user$
 
 # Other
-^.travis\.yml$
 ^cran-comments\.md$
+^.travis\.yml$
+^appveyor\.yml$
