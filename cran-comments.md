@@ -9,6 +9,7 @@
 - Local macOS, R 3.4.3
 - Travis CI, Linux: R release, R devel
 - Travis CI, OS X: R release
+- Appveyor, Windows Server 2012: R release
 
 ### R CMD check results
 
