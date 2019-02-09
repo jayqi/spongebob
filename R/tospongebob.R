@@ -1,16 +1,20 @@
-#' @title Spongebob-Case Conversion : sPOngEBOb-CasE cOnVErsIoN
+#' @title SpongeBob-Case Conversion : sPOngEBOb-CasE cOnVErsIoN
 #' @name tospongebob
-#' @description Translate character vectors to spongebob case.
+#' @description Translate character vectors to
+#' \href{https://knowyourmeme.com/memes/mocking-spongebob}{Mocking SpongeBob
+#' case}.
 #'
-#' trAnSLatE ChaRacTeR veCtOrS To SponGebOB CaSE
+#' tRANsLate ChaRACtER vECtoRs tO
+#' \href{https://knowyourmeme.com/memes/mocking-spongebob}{mOcKiNg spOngeBoB
+#' caSe}.
 #' @param x a character vector. A CHarACTer vEcToR.
 #' @return A character vector of the same length as \code{x}.
 #'
 #' a ChaRaCteR vecTor OF The SAme LenGth As \code{x}.
 #' @examples
-#' tospongebob("Spongebob-Case Conversion")
+#' tospongebob("SpongeBob-Case Conversion")
 #' tospongebob(x = c(
-#'     "Translate character vectors to spongebob case.",
+#'     "Translate character vectors to Mocking SpongeBob case",
 #'     "a character vector.",
 #'     "A character vector of the same length as"
 #' ))

@@ -1,6 +1,6 @@
 # spongebob 0.2.0.900
 - New family of functions `spongebobsay`, `spongebobthink`, and `spongebobwhisper` that let you have ASCII Spongebob--in the style of cowsay--deliver your message WitH VisuAl flAiR aNd soPhIsTIcATIoN. 
-- Standalone ASCII Mocking Spongebob art available as a character string `ascii_spongebob` in case you want him to gAzE SiLEntlY aT You.
+- Standalone ASCII Mocking Spongebob art available as a character string via new function `ascii_spongebob` in case you want him to gAzE SiLEntlY aT You.
 
 ```
  ----------------------------------------- 
