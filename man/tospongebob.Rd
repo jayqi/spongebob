@@ -2,7 +2,7 @@
 % Please edit documentation in R/tospongebob.R
 \name{tospongebob}
 \alias{tospongebob}
-\title{Spongebob-Case Conversion : sPOngEBOb-CasE cOnVErsIoN}
+\title{SpongeBob-Case Conversion : sPOngEBOb-CasE cOnVErsIoN}
 \usage{
 tospongebob(x)
 }
@@ -15,14 +15,18 @@ A character vector of the same length as \code{x}.
 a ChaRaCteR vecTor OF The SAme LenGth As \code{x}.
 }
 \description{
-Translate character vectors to spongebob case.
+Translate character vectors to
+\href{https://knowyourmeme.com/memes/mocking-spongebob}{Mocking SpongeBob
+case}.
 
-trAnSLatE ChaRacTeR veCtOrS To SponGebOB CaSE
+tRANsLate ChaRACtER vECtoRs tO
+\href{https://knowyourmeme.com/memes/mocking-spongebob}{mOcKiNg spOngeBoB
+caSe}.
 }
 \examples{
-tospongebob("Spongebob-Case Conversion")
+tospongebob("SpongeBob-Case Conversion")
 tospongebob(x = c(
-    "Translate character vectors to spongebob case.",
+    "Translate character vectors to Mocking SpongeBob case",
     "a character vector.",
     "A character vector of the same length as"
 ))

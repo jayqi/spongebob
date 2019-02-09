@@ -1,4 +1,4 @@
-# Spongebob ASCII template
+# SpongeBob ASCII template
 # First line missing three additional characters on the left side
 # To make space for speech bubble tail
 .SPONGEBOB_ASCII <- ("    *
@@ -20,7 +20,7 @@
 # Maximum allowed width for speech bubble content
 .MAX_ALLOWED_WIDTH <- 40
 
-# Generator function for spongebob ASCII speech functions
+# Generator function for SpongeBob ASCII speech functions
 # Takes character strings defining symbols that will be the left boundary,
 # right boundary, and tail of the speech bubble
 # Returns a closure that takes a character string input
@@ -29,11 +29,15 @@
     # TODO: Input validation. is.character, length == 1, nchar == 1 or 2
 
     # Closure
-    function (what) {
+    function (what, print = TRUE) {
 
         # Input validation
         if (!is.character(what) | length(what) != 1) {
-            msg <- "Input to spongebobsay is not a length-1 character string."
+            msg <- "Input what is not a length-1 character string."
+            stop(paste(msg, tospongebob(msg)))
+        }
+        if (!is.logical(print) | length(print) != 1) {
+            msg <- "Argument print is not a length-1 logical."
             stop(paste(msg, tospongebob(msg)))
         }
 
@@ -67,29 +71,36 @@
 
         out <- paste0(speechBubble, .SPONGEBOB_ASCII)
 
-        return(out)
+        # Print output using cat
+        if (print) {cat(out)}
+
+        return(invisible(out))
     }
 }
 
-#' @title Spongebob ASCII Messages : SPongEBob aScii MeSsaGeS
+#' @title SpongeBob ASCII Messages : sPongEBoB aScii MesSAgEs
 #' @name spongebobsay
 #' @rdname spongebobsay
 #' @aliases spongebobsay
 #' @aliases spongebobthink
-#' @description A set of functions that generate ASCII art with speech bubbles
-#' in the style of \href{https://en.wikipedia.org/wiki/Cowsay}{cowsay}.
+#' @description A set of functions that generate SpongeBob ASCII art with speech
+#' bubbles in the style of \href{https://en.wikipedia.org/wiki/Cowsay}{cowsay}.
 #'
-#' a SeT Of fUNcTiONS tHat gEnerATE asCiI arT wiTH SpEEcH BUbBles In thE
-#' StylE Of \href{https://en.wikipedia.org/wiki/Cowsay}{cOWsaY}.
+#' a seT OF fuNctiOnS tHat GEnerAte sPONgeBOb AScIi aRT wiTH SpeEcH buBBLeS In
+#' THe sTylE OF \href{https://en.wikipedia.org/wiki/Cowsay}{cOWsaY}.
 #' @param what a length-1 character string. A leNGTh-1 chARActeR StRInG.
+#' @param print a length-1 logical flag for whether to print output to console.
+#' A LenGTH-1 lOGicaL flaG foR wHethEr tO prInT ResUlt TO cONsolE.
+#' @return a character string containing the ASCII art. Use
+#' \code{\link[base]{cat}} to print with proper formatting.
+#'
+#' A CHaRACtER stRINg cONtaINiNG ThE ASciI ARt. uSe \code{\link[base]{cat}} TO
+#' prInT WiTH prOper FORmatTiNg.
 NULL
 
 #' @rdname spongebobsay
 #' @examples
-#' speech <- spongebobsay(
-#'     "globalVariables is a hideous hack and I will never use it."
-#' )
-#' cat(speech)
+#' spongebobsay("globalVariables is a hideous hack and I will never use it.")
 #'
 #' @export
 spongebobsay <- .make_ascii_maker(left = "|"
@@ -100,8 +111,10 @@ spongebobsay <- .make_ascii_maker(left = "|"
 
 #' @rdname spongebobsay
 #' @examples
-#' thought <- spongebobthink("@hadley you shouldn't say you'll never use things when only two years later you think it's fine -- hadley")
-#' cat(thought)
+#' spongebobthink(
+#'     "@hadley you shouldn't say you'll never use things when only two years
+#'     later you think it's fine -- hadley"
+#' )
 #'
 #' @export
 spongebobthink <- .make_ascii_maker(left = "("
@@ -112,8 +125,10 @@ spongebobthink <- .make_ascii_maker(left = "("
 
 #' @rdname spongebobsay
 #' @examples
-#' whisper <- spongebobwhisper("it's still a hideous hack, but you just have to suck it up if you want your package on CRAN")
-#' cat(whisper)
+#' spongebobwhisper(
+#'     "it's still a hideous hack, but you just have to suck it up if you want
+#'     your package on CRAN"
+#' )
 #'
 #' @export
 spongebobwhisper <- .make_ascii_maker(left = ":"
@@ -125,7 +140,25 @@ spongebobwhisper <- .make_ascii_maker(left = ":"
 #' @title ASCII Spongebob
 #' @name ascii_spongebob
 #' @description ASCII Mocking Spongebob used by \code{\link{spongebobsay}}.
+#' @param print a length-1 logical flag for whether to print output to console.
+#' A LenGTH-1 lOGicaL flaG foR wHethEr tO prInT ResUlt TO cONsolE.
+#' @return a character string containing the ASCII art. Use
+#' \code{\link[base]{cat}} to print with proper formatting.
+#'
+#' A CHaRACtER stRINg cONtaINiNG ThE ASciI ARt. uSe \code{\link[base]{cat}} TO
+#' prInT WiTH prOper FORmatTiNg.
 #' @examples
-#' cat(ascii_spongebob)
+#' ascii_spongebob()
+#'
+#' art <- ascii_spongebob(print = FALSE)
+#' cat(art)
 #' @export
-ascii_spongebob <- paste0("     ", .SPONGEBOB_ASCII)
+ascii_spongebob <- function(print = TRUE) {
+    if (!is.logical(print) | length(print) != 1) {
+        msg <- "Argument print is not a length-1 logical."
+        stop(paste(msg, tospongebob(msg)))
+    }
+    out <- paste0("     ", .SPONGEBOB_ASCII)
+    if (print) {cat(out)}
+    return(invisible(out))
+}
