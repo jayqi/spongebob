@@ -15,6 +15,11 @@ cache:
 
 # Adapt as necessary starting from here
 
+branches:
+  only:
+  - master
+  - release
+
 build_script:
   - travis-tool.sh install_deps
 
