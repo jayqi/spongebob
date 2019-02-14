@@ -1,50 +1,78 @@
 # CRAN Submission History
 
-# v0.3.0
+Table of Contents:
 
-## Testing
+- [ v0.3.0 ](#v0.3.0)
+    - [ Submission 1 on 2019-02-09 ](#v0.3.0_submission1)
+    - [ Submission 2 on 2019-02-13 ](#v0.3.0_submission2)
+- [ v0.3.0 ](#v0.2.0)
+    - [ Submission 1 on 2019-01-23 ](#v0.2.0_submission1)
+- [ v0.2.0 ](#v0.1)
+    - [ Submission 1 on 2019-01-09 ](#v0.1_submission1)
 
-### Test Environments
+
+<a name="v0.3.0"/> 
+
+## v0.3.0
+
+### Testing
+
+#### Test Environments
 
 - Local macOS, R 3.5.2
 - Travis CI, Linux: R release, R devel
 - Travis CI, OS X: R release
 - Appveyor, Windows Server 2012: R release
 
-### R CMD check results
+#### R CMD check results
 
 0 ERRORs | 0 WARNINGs | 0 NOTEs
 
-## Submission 1 on 2019-02-09
+<a name="v0.3.0_submission1"/> 
 
-### CRAN Response
+### Submission 1 on 2019-02-09
+
+#### CRAN Response
 
 > Thanks, can you pls add a reference what "spongebob" case is? Either a paper in the form Authors (year) <doi:.....> or some web reference in the form <https.....>?
 
-## Submission 2 on 2019-02-13
+<a name="v0.3.0_submission2"/>
 
-Thank you for reviewing my submission. Per reviewer feedback, I have added a link to a web reference about Mocking SpongeBob case to the Description. 
+### Submission 2 on 2019-02-13
 
-# v0.2.0
+Our comment:
+> Thank you for reviewing my submission. Per reviewer feedback, I have added a link to a web reference about Mocking SpongeBob case to the Description. 
 
-## Testing
+Submission accepted on 2019-02-14.
+
+<a name="v0.2.0"/> 
+
+## v0.2.0
+
+### Testing
 
 - Local macOS, R version 3.4.3
 - Travis CI, Linux: R release
 
-## Submission on 2019-01-23
+<a name="v0.2.0_submission1"/>
 
-# v0.1
-
-## Testing
-
-- Local macOS, R version 3.4.3
-
-## Submission on 2019-01-09
+### Submission 1 on 2019-01-23
 
 Approved by CRAN auto-check service.
 
-### CRAN Response
+<a name="v0.1"/>
+
+## v0.1
+
+### Testing
+
+- Local macOS, R version 3.4.3
+
+<a name="v0.1_submission1"/>
+
+### Submission 1 on 2019-01-09
+
+#### CRAN Response
 
 > Thanks, and why do we need this on CRAN?
 
