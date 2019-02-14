@@ -6,9 +6,11 @@ Authors@R: c(
     person("Jay", "Qi", email = "jayqi.opensource@gmail.com", role = c("aut", "cre"))
     )
 Maintainer: Jay Qi <jayqi.opensource@gmail.com>
-Description: Convert character strings to Mocking SpongeBob case and show them 
+Description: Convert character strings to Mocking SpongeBob case 
+             <https://knowyourmeme.com/memes/mocking-spongebob> and show them 
              off in fun ways. 
-             coNvErt CharACtER strInGs to MOckiNG spOngEbOb caSE aND shOw tHem 
+             coNvErt CharACtER strInGs to MOckiNG spOngEbOb caSE 
+             <https://knowyourmeme.com/memes/mocking-spongebob> aND shOw tHem 
              OFf IN Fun WayS. 
 Suggests:
     testthat

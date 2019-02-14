@@ -15,9 +15,15 @@
 
 0 ERRORs | 0 WARNINGs | 0 NOTEs
 
-## Submission on 2019-02-09
+## Submission 1 on 2019-02-09
 
-...
+### CRAN Response
+
+> Thanks, can you pls add a reference what "spongebob" case is? Either a paper in the form Authors (year) <doi:.....> or some web reference in the form <https.....>?
+
+## Submission 2 on 2019-02-13
+
+Thank you for reviewing my submission. Per reviewer feedback, I have added a link to a web reference about Mocking SpongeBob case to the Description. 
 
 # v0.2.0
 
