@@ -36,6 +36,8 @@
 #'     names, and convertible columns of a data.frame}
 #'     \item{\bold{\code{tospongebob.fortune}}}{: convert the content of a
 #'     \link[fortunes:fortunes]{fortunes::fortune} object}
+#'     \item{\bold{\code{tospongebob.function}}}{: deparse function into a
+#'     character vector, convert, and then combine into one string block}
 #' }
 #' @examples
 #' tospongebob("SpongeBob-Case Conversion")
@@ -209,4 +211,15 @@ tospongebob.data.frame <- function(x) {
 tospongebob.fortune <- function(x) {
     # Don't convert names because print.fortune depends on them
     return(tospongebob.default(x, convert.names = FALSE))
+}
+
+# == S3 method for functions ==
+# Deparse into character vector and convert
+# Paste into one block for display
+#' @rdname tospongebob
+#' @keywords internal
+#' @export
+tospongebob.function <- function(x) {
+    # Deparse into text, convert, and then collapse into one blob
+    paste(tospongebob(deparse(x)), collapse = "\n")
 }
