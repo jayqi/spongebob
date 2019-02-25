@@ -2,32 +2,90 @@
 % Please edit documentation in R/tospongebob.R
 \name{tospongebob}
 \alias{tospongebob}
+\alias{tospongebob.character}
+\alias{tospongebob.default}
+\alias{tospongebob.factor}
+\alias{tospongebob.data.frame}
+\alias{tospongebob.fortune}
 \title{SpongeBob-Case Conversion : sPOngEBOb-CasE cOnVErsIoN}
 \usage{
 tospongebob(x)
+
+\method{tospongebob}{character}(x, convert.names = TRUE)
+
+\method{tospongebob}{default}(x, convert.names = TRUE)
+
+\method{tospongebob}{factor}(x)
+
+\method{tospongebob}{data.frame}(x)
+
+\method{tospongebob}{fortune}(x)
 }
 \arguments{
-\item{x}{a character vector. A CHarACTer vEcToR.}
+\item{x}{object with text to be converted to Mocking SpongeBob case.}
+
+\item{convert.names}{logical, indicating whether or not to convert the names
+of the object}
 }
 \value{
-A character vector of the same length as \code{x}.
-
-a ChaRaCteR vecTor OF The SAme LenGth As \code{x}.
+object with its text converted to Mocking SpongeBob case. ObjECt WiTH
+iTS tEXt CONvErTeD TO mOCkinG SponGEBob CasE.
 }
 \description{
-Translate character vectors to
-\href{https://knowyourmeme.com/memes/mocking-spongebob}{Mocking SpongeBob
-case}.
+\code{tospongebob} is an S3 generic function for converting text
+in R objects to \href{https://knowyourmeme.com/memes/mocking-spongebob}{
+Mocking SpongeBob case}. The core method for character vectors will return
+the input character vector with case-converted elements. For other objects,
+it will attempt to appropriately find text and convert them.
 
-tRANsLate ChaRACtER vECtoRs tO
-\href{https://knowyourmeme.com/memes/mocking-spongebob}{mOcKiNg spOngeBoB
-caSe}.
+\code{tospongebob} IS an S3 gENErIC FunCtIoN fOR cOnveRtIng Text IN r obJEcts
+To \href{https://knowyourmeme.com/memes/mocking-spongebob}{MocKinG SpOnGEbob
+CasE}. tHe cOrE MEtHOd FoR CharActEr VECtorS wIll RetURN tHe INPuT chARaCTer
+VEcTOr WItH cASe-cONVeRTed ELeMenTS. foR oThER objECTs, iT wIlL aTtemPT tO
+APprOPrIAtELy fInd tEXt aNd cONvERT tHEm.
+}
+\details{
+This section describes the (non-exported) S3 methods in more detail.
+
+The core \bold{\code{tospongebob.character}} method takes an input character
+vector and returns the same vector with its elements converted to Mocking
+SpongeBob case. Names of the vector are also converted unless parameter
+\code{convert.names = FALSE}. This method is then leveraged by all other
+methods.
+
+The default \bold{\code{tospongebob.default}} method will iterate through any
+elements of the object and attempt to convert those. It will also convert the
+names of the object unless parameter \code{convert.names = FALSE}. NULL
+values are passed through as NULL.
+
+Additional S3 methods for the following classes have been implemented:
+\describe{
+    \item{\bold{\code{tospongebob.factor}}}{: convert levels of factor vectors}
+    \item{\bold{\code{tospongebob.data.frame}}}{: convert row names, column
+    names, and convertible columns of a data.frame}
+    \item{\bold{\code{tospongebob.fortune}}}{: convert the content of a
+    \link[fortunes:fortunes]{fortunes::fortune} object}
+}
 }
 \examples{
 tospongebob("SpongeBob-Case Conversion")
-tospongebob(x = c(
-    "Translate character vectors to Mocking SpongeBob case",
-    "a character vector.",
-    "A character vector of the same length as"
-))
+tospongebob(c("S3 generic function", "Mocking SpongeBob case"))
+
+tospongebob(packageDescription("base"))
+
+df <- head(CO2)
+tospongebob(df)
+
+nicktoons <- list(
+    spongebob = list(
+        episodes = c("Help Wanted", "Reef Blower", "Tea at the Treedome"),
+        characters = c("SpongeBob", "Patrick", "Squidward", "Sandy")
+    ),
+    hey_arnold = list(
+        episodes = c("Downtown as Fruits", "Eugene's Bike"),
+        characters = c("Arnold", "Gerald", "Helga")
+    )
+)
+tospongebob(nicktoons)
 }
+\keyword{internal}
