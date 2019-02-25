@@ -18,7 +18,19 @@
 .BUBBLE_TAIL_TEMPLATE <- "  %s\n   %s"
 
 # Maximum allowed width for speech bubble content
-.MAX_ALLOWED_WIDTH <- 40
+.DEFAULT_WIDTH <- 40L
+
+.longest_word <- function(charVec) {
+    # Input validation
+    if (!is.character(charVec)) {
+        msg <- "Something's wrong. Input to .longest_word not character."
+        stop(paste(msg, tospongebob(msg)))
+    }
+
+    words <- unlist(strsplit(charVec, "\\s+"))
+
+    return(words[which.max(nchar(words))])
+}
 
 # Generator function for SpongeBob ASCII speech functions
 # Takes character strings defining symbols that will be the left boundary,
@@ -29,32 +41,55 @@
     # TODO: Input validation. is.character, length == 1, nchar == 1 or 2
 
     # Closure
-    function (what, print = TRUE) {
+    function(what, print = TRUE, width = NULL) {
 
-        # Input validation
-        if (!is.character(what) | length(what) != 1) {
-            msg <- "Input what is not a length-1 character string."
-            stop(paste(msg, tospongebob(msg)))
-        }
+        # Input validation for parameters
         if (!is.logical(print) | length(print) != 1) {
             msg <- "Argument print is not a length-1 logical."
             stop(paste(msg, tospongebob(msg)))
         }
 
-        # Split text up into lines
-        txt <- strwrap(what, width = .MAX_ALLOWED_WIDTH)
+        # Convert input to SpongeBob case
+        # If output is not a character vector, then convert it to
+        # one by capturing the output of its print method
+        what <- tospongebob(what)
+        if (!is.character(what)) {
+            what <- capture.output(print(tospongebob(what)))
+        }
+
+        # Figure out maximum word
+        longestWord <- .longest_word(what)
+
+        # If width is set, validate that it's long enough
+
+
+        # If width is not NULL, validate that it's good
+        if (!is.null(width)) {
+            if (length(width) != 1
+                | !all.equal(width, round(width))
+                | round(width) < 1
+            ){
+                msg <- "Argument width is not a length-1 positive integer"
+                stop(paste(msg, tospongebob(msg)))
+            }
+            if (!is.null(width) & width < nchar(longestWord)) {
+                msg <- sprintf(
+                    "Specified width %d is less than longest word '%s' in input."
+                    , width
+                    , longestWord
+                )
+                stop(paste(msg, tospongebob(msg)))
+            }
+
+        # Otherwise, set to max between longest word and default
+        } else {
+            width <- max(.DEFAULT_WIDTH, nchar(longestWord))
+        }
+
+        # Split text up into lines by width
+        txt <- strwrap(what, width = width)
         txt <- tospongebob(txt)
         maxLength <- max(nchar(txt))
-
-        # Right now this doesn't support words longer than .MAX_ALLOWED_WIDTH
-        # Someday maybe we will split up long words
-        if (maxLength > .MAX_ALLOWED_WIDTH) {
-            msg <- paste(
-                "Sorry, spongebobsay does not support input with words longer than"
-                , sprintf("%d characters.", .MAX_ALLOWED_WIDTH)
-            )
-            stop(paste(msg, tospongebob(msg)))
-        }
 
         # Add the speech bubble left-right boundaries
         txt <- sprintf(sprintf("%%-%ds", maxLength), txt)
@@ -90,12 +125,14 @@
 #' THe sTylE OF \href{https://en.wikipedia.org/wiki/Cowsay}{cOWsaY}.
 #' @param what a length-1 character string. A leNGTh-1 chARActeR StRInG.
 #' @param print a length-1 logical flag for whether to print output to console.
+#' @param width a length-1 positive integer or numeric whole number
 #' A LenGTH-1 lOGicaL flaG foR wHethEr tO prInT ResUlt TO cONsolE.
 #' @return a character string containing the ASCII art. Use
 #' \code{\link[base]{cat}} to print with proper formatting.
 #'
 #' A CHaRACtER stRINg cONtaINiNG ThE ASciI ARt. uSe \code{\link[base]{cat}} TO
 #' prInT WiTH prOper FORmatTiNg.
+#' @seealso ascii_spongebob
 NULL
 
 #' @rdname spongebobsay
@@ -137,9 +174,11 @@ spongebobwhisper <- .make_ascii_maker(left = ":"
                                     , bottom = "."
                                     , tail = " .")
 
-#' @title ASCII Spongebob
+#' @title ASCII Spongebob : AsCIi sPOngEbob
 #' @name ascii_spongebob
 #' @description ASCII Mocking Spongebob used by \code{\link{spongebobsay}}.
+#'
+#' aSCIi mOckiNg SPOngEboB uSED bY \code{\link{spongebobsay}}.
 #' @param print a length-1 logical flag for whether to print output to console.
 #' A LenGTH-1 lOGicaL flaG foR wHethEr tO prInT ResUlt TO cONsolE.
 #' @return a character string containing the ASCII art. Use
@@ -152,6 +191,7 @@ spongebobwhisper <- .make_ascii_maker(left = ":"
 #'
 #' art <- ascii_spongebob(print = FALSE)
 #' cat(art)
+#' @seealso spongebobsay
 #' @export
 ascii_spongebob <- function(print = TRUE) {
     if (!is.logical(print) | length(print) != 1) {
