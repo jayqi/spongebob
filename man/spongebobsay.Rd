@@ -6,17 +6,19 @@
 \alias{spongebobwhisper}
 \title{SpongeBob ASCII Messages : sPongEBoB aScii MesSAgEs}
 \usage{
-spongebobsay(what, print = TRUE)
+spongebobsay(what, print = TRUE, width = NULL)
 
-spongebobthink(what, print = TRUE)
+spongebobthink(what, print = TRUE, width = NULL)
 
-spongebobwhisper(what, print = TRUE)
+spongebobwhisper(what, print = TRUE, width = NULL)
 }
 \arguments{
-\item{what}{a length-1 character string. A leNGTh-1 chARActeR StRInG.}
+\item{what}{an object accepted by \code{\link{tospongebob}}}
 
-\item{print}{a length-1 logical flag for whether to print output to console.
-A LenGTH-1 lOGicaL flaG foR wHethEr tO prInT ResUlt TO cONsolE.}
+\item{print}{a length-1 logical, indicating whether to print output to console.}
+
+\item{width}{a length-1 positive integer or numeric whole number specifying
+width to wrap text}
 }
 \value{
 a character string containing the ASCII art. Use
@@ -32,6 +34,15 @@ bubbles in the style of \href{https://en.wikipedia.org/wiki/Cowsay}{cowsay}.
 a seT OF fuNctiOnS tHat GEnerAte sPONgeBOb AScIi aRT wiTH SpeEcH buBBLeS In
 THe sTylE OF \href{https://en.wikipedia.org/wiki/Cowsay}{cOWsaY}.
 }
+\details{
+These functions will convert the input to Mocking SpongeBob case
+using \code{\link{tospongebob}}. If the converted output is not already a
+character vector, it will be converted to such using
+\code{\link[base]{print}}.
+
+The ASCII SpongeBob graphic is available standalone using
+\code{\link{ascii_spongebob}}.
+}
 \examples{
 spongebobsay("globalVariables is a hideous hack and I will never use it.")
 
@@ -45,4 +56,7 @@ spongebobwhisper(
     your package on CRAN"
 )
 
+}
+\seealso{
+\code{\link{tospongebob}}, \code{\link{ascii_spongebob}}
 }

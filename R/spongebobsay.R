@@ -123,16 +123,23 @@
 #'
 #' a seT OF fuNctiOnS tHat GEnerAte sPONgeBOb AScIi aRT wiTH SpeEcH buBBLeS In
 #' THe sTylE OF \href{https://en.wikipedia.org/wiki/Cowsay}{cOWsaY}.
-#' @param what a length-1 character string. A leNGTh-1 chARActeR StRInG.
-#' @param print a length-1 logical flag for whether to print output to console.
-#' @param width a length-1 positive integer or numeric whole number
-#' A LenGTH-1 lOGicaL flaG foR wHethEr tO prInT ResUlt TO cONsolE.
+#' @param what an object accepted by \code{\link{tospongebob}}
+#' @param print a length-1 logical, indicating whether to print output to console.
+#' @param width a length-1 positive integer or numeric whole number specifying
+#' width to wrap text
 #' @return a character string containing the ASCII art. Use
 #' \code{\link[base]{cat}} to print with proper formatting.
 #'
 #' A CHaRACtER stRINg cONtaINiNG ThE ASciI ARt. uSe \code{\link[base]{cat}} TO
 #' prInT WiTH prOper FORmatTiNg.
-#' @seealso ascii_spongebob
+#' @details These functions will convert the input to Mocking SpongeBob case
+#' using \code{\link{tospongebob}}. If the converted output is not already a
+#' character vector, it will be converted to such using
+#' \code{\link[base]{print}}.
+#'
+#' The ASCII SpongeBob graphic is available standalone using
+#' \code{\link{ascii_spongebob}}.
+#' @seealso \code{\link{tospongebob}}, \code{\link{ascii_spongebob}}
 NULL
 
 #' @rdname spongebobsay
@@ -180,7 +187,6 @@ spongebobwhisper <- .make_ascii_maker(left = ":"
 #'
 #' aSCIi mOckiNg SPOngEboB uSED bY \code{\link{spongebobsay}}.
 #' @param print a length-1 logical flag for whether to print output to console.
-#' A LenGTH-1 lOGicaL flaG foR wHethEr tO prInT ResUlt TO cONsolE.
 #' @return a character string containing the ASCII art. Use
 #' \code{\link[base]{cat}} to print with proper formatting.
 #'
@@ -191,7 +197,7 @@ spongebobwhisper <- .make_ascii_maker(left = ":"
 #'
 #' art <- ascii_spongebob(print = FALSE)
 #' cat(art)
-#' @seealso spongebobsay
+#' @seealso \code{\link{spongebobsay}}
 #' @export
 ascii_spongebob <- function(print = TRUE) {
     if (!is.logical(print) | length(print) != 1) {

@@ -7,6 +7,8 @@
 \alias{tospongebob.factor}
 \alias{tospongebob.data.frame}
 \alias{tospongebob.fortune}
+\alias{tospongebob.function}
+\alias{tospongebob.ggplot}
 \title{SpongeBob-Case Conversion : sPOngEBOb-CasE cOnVErsIoN}
 \usage{
 tospongebob(x)
@@ -17,9 +19,14 @@ tospongebob(x)
 
 \method{tospongebob}{factor}(x)
 
-\method{tospongebob}{data.frame}(x)
+\method{tospongebob}{data.frame}(x, convert.rownames = TRUE,
+  convert.colnames = TRUE)
 
 \method{tospongebob}{fortune}(x)
+
+\method{tospongebob}{function}(x)
+
+\method{tospongebob}{ggplot}(x)
 }
 \arguments{
 \item{x}{object with text to be converted to Mocking SpongeBob case.}
@@ -54,17 +61,22 @@ SpongeBob case. Names of the vector are also converted unless parameter
 methods.
 
 The default \bold{\code{tospongebob.default}} method will iterate through any
-elements of the object and attempt to convert those. It will also convert the
-names of the object unless parameter \code{convert.names = FALSE}. NULL
-values are passed through as NULL.
+elements of list-like objects and attempt to convert those. It will also
+convert the names of the object unless parameter \code{convert.names = FALSE}.
+NULL values are passed through as NULL.
 
 Additional S3 methods for the following classes have been implemented:
 \describe{
-    \item{\bold{\code{tospongebob.factor}}}{: convert levels of factor vectors}
     \item{\bold{\code{tospongebob.data.frame}}}{: convert row names, column
     names, and convertible columns of a data.frame}
+    \item{\bold{\code{tospongebob.factor}}}{: convert levels of factor
+    vectors}
     \item{\bold{\code{tospongebob.fortune}}}{: convert the content of a
     \link[fortunes:fortunes]{fortunes::fortune} object}
+    \item{\bold{\code{tospongebob.function}}}{: deparse function into a
+    character vector, convert, and then combine into one string block}
+    \item{\bold{\code{tospongebob.ggplot}}}{: convert text labels in ggplot
+    object}
 }
 }
 \examples{
@@ -88,4 +100,3 @@ nicktoons <- list(
 )
 tospongebob(nicktoons)
 }
-\keyword{internal}
