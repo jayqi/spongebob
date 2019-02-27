@@ -25,19 +25,22 @@
 #' methods.
 #'
 #' The default \bold{\code{tospongebob.default}} method will iterate through any
-#' elements of the object and attempt to convert those. It will also convert the
-#' names of the object unless parameter \code{convert.names = FALSE}. NULL
-#' values are passed through as NULL.
+#' elements of list-like objects and attempt to convert those. It will also
+#' convert the names of the object unless parameter \code{convert.names = FALSE}.
+#' NULL values are passed through as NULL.
 #'
 #' Additional S3 methods for the following classes have been implemented:
 #' \describe{
-#'     \item{\bold{\code{tospongebob.factor}}}{: convert levels of factor vectors}
 #'     \item{\bold{\code{tospongebob.data.frame}}}{: convert row names, column
 #'     names, and convertible columns of a data.frame}
+#'     \item{\bold{\code{tospongebob.factor}}}{: convert levels of factor
+#'     vectors}
 #'     \item{\bold{\code{tospongebob.fortune}}}{: convert the content of a
 #'     \link[fortunes:fortunes]{fortunes::fortune} object}
 #'     \item{\bold{\code{tospongebob.function}}}{: deparse function into a
 #'     character vector, convert, and then combine into one string block}
+#'     \item{\bold{\code{tospongebob.ggplot}}}{: convert text labels in ggplot
+#'     object}
 #' }
 #' @examples
 #' tospongebob("SpongeBob-Case Conversion")
@@ -68,7 +71,6 @@ tospongebob <- function(x) {
 # Core method behind tospongebob generic
 # Converts a character vector to spongebob case
 #' @rdname tospongebob
-#' @keywords internal
 #' @export
 tospongebob.character <- function(x, convert.names = TRUE) {
 
@@ -80,7 +82,7 @@ tospongebob.character <- function(x, convert.names = TRUE) {
 
     # Hold onto names for later. Convert if specified.
     x_names <- names(x)
-    if (convert.names) {
+    if (convert.names & !is.null(x_names)) {
         x_names <- tospongebob(x_names)
     }
 
@@ -153,7 +155,6 @@ tospongebob.character <- function(x, convert.names = TRUE) {
 # == Default S3 method ==
 # Attempt to convert names and elements that are character
 #' @rdname tospongebob
-#' @keywords internal
 #' @export
 tospongebob.default <- function(x, convert.names = TRUE) {
     # If NULL value, nothing to convert
@@ -182,7 +183,6 @@ tospongebob.default <- function(x, convert.names = TRUE) {
 # == S3 method for factors ==
 # Convert levels
 #' @rdname tospongebob
-#' @keywords internal
 #' @export
 tospongebob.factor <- function(x) {
     levels(x) <- tospongebob(levels(x))
@@ -192,21 +192,23 @@ tospongebob.factor <- function(x) {
 # == S3 method for data.frames ==
 # Convert row names, column names (names()), and character columns
 #' @rdname tospongebob
-#' @keywords internal
 #' @export
-tospongebob.data.frame <- function(x) {
+tospongebob.data.frame <- function(x
+                                   , convert.rownames = TRUE
+                                   , convert.colnames = TRUE) {
     # First convert row names
-    row.names(x) <- tospongebob(row.names(x))
+    if (convert.rownames) {
+        row.names(x) <- tospongebob(row.names(x))
+    }
 
     # Then use default method to convert column names and columns
-    return(tospongebob.default(x))
+    return(tospongebob.default(x, convert.names = convert.colnames))
 }
 
 # == S3 method for fortunes ==
 # Don't convert names because the print.fortune method
 # depends on them being named that way
 #' @rdname tospongebob
-#' @keywords internal
 #' @export
 tospongebob.fortune <- function(x) {
     # Don't convert names because print.fortune depends on them
@@ -217,9 +219,26 @@ tospongebob.fortune <- function(x) {
 # Deparse into character vector and convert
 # Paste into one block for display
 #' @rdname tospongebob
-#' @keywords internal
 #' @export
 tospongebob.function <- function(x) {
     # Deparse into text, convert, and then collapse into one blob
     paste(tospongebob(deparse(x)), collapse = "\n")
+}
+
+# == S3 method for ggplot2 plots ==
+# Convert plot labels and levels for character/factor variables in data
+#' @rdname tospongebob
+#' @export
+tospongebob.ggplot <- function(x) {
+    # Convert plot labels
+    x[['labels']] <- tospongebob.default(x[['labels']], convert.names = FALSE)
+
+    # Find character/factor variables in data and convert them
+    # Don't convert row or column names because they need to be referenced
+    x[['data']] <- tospongebob.data.frame(x[['data']]
+                                          , convert.rownames = FALSE
+                                          , convert.colnames = FALSE
+                                          )
+
+    return(x)
 }
