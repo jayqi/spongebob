@@ -2,13 +2,12 @@
 % Please edit documentation in R/spongebobsay.R
 \name{ascii_spongebob}
 \alias{ascii_spongebob}
-\title{ASCII Spongebob}
+\title{ASCII Spongebob : AsCIi sPOngEbob}
 \usage{
 ascii_spongebob(print = TRUE)
 }
 \arguments{
-\item{print}{a length-1 logical flag for whether to print output to console.
-A LenGTH-1 lOGicaL flaG foR wHethEr tO prInT ResUlt TO cONsolE.}
+\item{print}{a length-1 logical flag for whether to print output to console.}
 }
 \value{
 a character string containing the ASCII art. Use
@@ -19,10 +18,15 @@ prInT WiTH prOper FORmatTiNg.
 }
 \description{
 ASCII Mocking Spongebob used by \code{\link{spongebobsay}}.
+
+aSCIi mOckiNg SPOngEboB uSED bY \code{\link{spongebobsay}}.
 }
 \examples{
 ascii_spongebob()
 
 art <- ascii_spongebob(print = FALSE)
 cat(art)
+}
+\seealso{
+\code{\link{spongebobsay}}
 }
