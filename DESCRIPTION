@@ -6,10 +6,10 @@ Authors@R: c(
     person("Jay", "Qi", email = "jayqi.opensource@gmail.com", role = c("aut", "cre"))
     )
 Maintainer: Jay Qi <jayqi.opensource@gmail.com>
-Description: Convert text to Mocking SpongeBob case 
+Description: Convert text (and text in R objects) to Mocking SpongeBob case 
              <https://knowyourmeme.com/memes/mocking-spongebob> and show them 
              off in fun ways. 
-             ConvERt TeXt TO MocKINg SPoNGEboB casE
+             CoNVErT TexT (AnD TeXt In r ObJeCtS) To MOCkINg SpoNgebOb CAsE
              <https://knowyourmeme.com/memes/mocking-spongebob> aND shOw tHem 
              OFf IN Fun WayS. 
 Suggests:
