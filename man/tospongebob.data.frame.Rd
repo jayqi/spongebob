@@ -36,8 +36,11 @@ default.
 }
 \examples{
 df1 <- head(datasets::CO2)
-tospongebob(df)
+tospongebob(df1)
 
 df2 <- head(datasets::mtcars)
-tospongebob(df)
+tospongebob(df2)
+}
+\seealso{
+\code{\link{tospongebob}}
 }

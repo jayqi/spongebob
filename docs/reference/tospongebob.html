@@ -30,14 +30,20 @@
 
 
 
+  <link href="../extra.css" rel="stylesheet">
+  
 <meta property="og:title" content="SpongeBob-Case Conversion : sPOngEBOb-CasE cOnVErsIoN — tospongebob" />
 
-<meta property="og:description" content="Translate character vectors to
-Mocking SpongeBob
-case.
-tRANsLate ChaRACtER vECtoRs tO
-mOcKiNg spOngeBoB
-caSe." />
+<meta property="og:description" content="tospongebob is an S3 generic function for converting text
+in R objects to 
+Mocking SpongeBob case. The core method for character vectors will return
+the input character vector with case-converted elements. For other objects,
+it will attempt to appropriately find text and convert them.
+tospongebob IS an S3 gENErIC FunCtIoN fOR cOnveRtIng Text IN r obJEcts
+To MocKinG SpOnGEbob
+CasE. tHe cOrE MEtHOd FoR CharActEr VECtorS wIll RetURN tHe INPuT chARaCTer
+VEcTOr WItH cASe-cONVeRTed ELeMenTS. foR oThER objECTs, iT wIlL aTtemPT tO
+APprOPrIAtELy fInd tEXt aNd cONvERT tHEm." />
 <meta name="twitter:card" content="summary" />
 
 
@@ -68,7 +74,7 @@ caSe." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">spongebob</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.3.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.4.0</span>
       </span>
     </div>
 
@@ -114,40 +120,129 @@ caSe." />
 
     <div class="ref-description">
     
-    <p>Translate character vectors to
-<a href='https://knowyourmeme.com/memes/mocking-spongebob'>Mocking SpongeBob
-case</a>.</p>
-<p>tRANsLate ChaRACtER vECtoRs tO
-<a href='https://knowyourmeme.com/memes/mocking-spongebob'>mOcKiNg spOngeBoB
-caSe</a>.</p>
+    <p><code>tospongebob</code> is an S3 generic function for converting text
+in R objects to <a href='https://knowyourmeme.com/memes/mocking-spongebob'>
+Mocking SpongeBob case</a>. The core method for character vectors will return
+the input character vector with case-converted elements. For other objects,
+it will attempt to appropriately find text and convert them.</p>
+<p><code>tospongebob</code> IS an S3 gENErIC FunCtIoN fOR cOnveRtIng Text IN r obJEcts
+To <a href='https://knowyourmeme.com/memes/mocking-spongebob'>MocKinG SpOnGEbob
+CasE</a>. tHe cOrE MEtHOd FoR CharActEr VECtorS wIll RetURN tHe INPuT chARaCTer
+VEcTOr WItH cASe-cONVeRTed ELeMenTS. foR oThER objECTs, iT wIlL aTtemPT tO
+APprOPrIAtELy fInd tEXt aNd cONvERT tHEm.</p>
     
     </div>
 
-    <pre class="usage"><span class='fu'>tospongebob</span>(<span class='no'>x</span>)</pre>
+    <pre class="usage"><span class='fu'>tospongebob</span>(<span class='no'>x</span>, <span class='no'>...</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>x</th>
-      <td><p>a character vector. A CHarACTer vEcToR.</p></td>
+      <td><p>object with text to be converted to Mocking SpongeBob case.</p></td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td><p>onlY hERe tO sATisFy R CMd CHeCk.</p></td>
     </tr>
     </table>
     
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>A character vector of the same length as <code>x</code>.</p>
-<p>a ChaRaCteR vecTor OF The SAme LenGth As <code>x</code>.</p>
+    <p>object with its text converted to Mocking SpongeBob case. ObjECt WiTH
+iTS tEXt CONvErTeD TO mOCkinG SponGEBob CasE.</p>
+    
+    <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
+
+    <p>This section describes the (non-exported) S3 methods in more detail.</p>
+<p>The core <b><code><a href='tospongebob.character.html'>tospongebob.character</a></code></b> method takes an input character
+vector and returns the same vector with its elements converted to Mocking
+SpongeBob case. Names of the vector are also converted unless parameter
+<code>convert.names = FALSE</code>. This method is then leveraged by all other
+methods.</p>
+<p>The default <b><code><a href='tospongebob.default.html'>tospongebob.default</a></code></b> method will iterate through any
+elements of list-like objects and attempt to convert those. It will also
+convert the names of the object unless parameter <code>convert.names = FALSE</code>.
+NULL values are passed through as NULL.</p>
+<p>Additional S3 methods for the following classes have been implemented:</p><dl class='dl-horizontal'>
+    <dt><b><code>tospongebob.array</code></b></dt><dd><p>: convert data and dimnames of an
+    array</p></dd>
+    <dt><b><code><a href='tospongebob.data.frame.html'>tospongebob.data.frame</a></code></b></dt><dd><p>: convert row names,
+    column names, and convertible columns of a data.frame</p></dd>
+    <dt><b><code>tospongebob.environment</code></b></dt><dd><p>: create a copy of an
+    environment with its objects converted</p></dd>
+    <dt><b><code>tospongebob.factor</code></b></dt><dd><p>: convert levels of factor
+    vectors</p></dd>
+    <dt><b><code>tospongebob.fortune</code></b></dt><dd><p>: convert the content of a
+    <a href='https://www.rdocumentation.org/packages/fortunes/topics/fortunes'>fortunes::fortune</a> object</p></dd>
+    <dt><b><code>tospongebob.function</code></b></dt><dd><p>: deparse function into a
+    character vector, convert, and then combine into one string block</p></dd>
+    <dt><b><code>tospongebob.ggplot</code></b></dt><dd><p>: convert text labels in
+    <code><a href='https://ggplot2.tidyverse.org/reference/ggplot.html'>ggplot2::ggplot</a></code> object</p></dd>
+    <dt><b><code>matrix</code></b></dt><dd><p>: convert data and dimnames of a
+    matrix</p></dd>
+    <dt><b><code>tospongebob.table</code></b></dt><dd><p>: convert data and dimnames of a
+    table</p></dd>
+</dl>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'>tospongebob</span>(<span class='st'>"SpongeBob-Case Conversion"</span>)</div><div class='output co'>#&gt; [1] "SPongEBOb-cASe cOnVERsION"</div><div class='input'><span class='fu'>tospongebob</span>(<span class='kw'>x</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(
-    <span class='st'>"Translate character vectors to Mocking SpongeBob case"</span>,
-    <span class='st'>"a character vector."</span>,
-    <span class='st'>"A character vector of the same length as"</span>
-))</div><div class='output co'>#&gt; [1] "tRANsLAtE CHaraCTeR VeCtORs To moCKIng sPONgeBOb caSE"
-#&gt; [2] "a CHaraCtER VeCTor."                                  
-#&gt; [3] "a CHarActeR vecToR of The sAmE LEngtH as"             </div></pre>
+    <pre class="examples"><div class='input'><span class='fu'>tospongebob</span>(<span class='st'>"SpongeBob-Case Conversion"</span>)</div><div class='output co'>#&gt; [1] "sPOngEbob-CaSE cOnveRSioN"</div><div class='input'><span class='fu'>tospongebob</span>(<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='st'>"S3 generic function"</span>, <span class='st'>"Mocking SpongeBob case"</span>))</div><div class='output co'>#&gt; [1] "S3 geNEric FuncTioN"    "moCkiNg SPOnGEbob CASe"</div><div class='input'>
+<span class='fu'>tospongebob</span>(<span class='fu'><a href='https://www.rdocumentation.org/packages/utils/topics/packageDescription'>packageDescription</a></span>(<span class='st'>"base"</span>))</div><div class='output co'>#&gt; PacKaGe: Base
+#&gt; vERsioN: 3.5.2
+#&gt; PrIORiTY: bAse
+#&gt; tiTLE: The r BAsE PaCKAgE
+#&gt; aUThOR: r coRE teaM ANd ConTRIbUTOrs WORldWIDe
+#&gt; mAIntaINEr: r CORe TEAm &lt;r-cOre@R-prOJect.Org&gt;
+#&gt; deSCrIPtIoN: bASe r fUnCtIoNs.
+#&gt; liCEnse: PaRt OF R 3.5.2
+#&gt; SUgGEsts: mEtHodS
+#&gt; BUIlt: R 3.5.2; ; 2019-01-13 04:26:18 UTc; uNIx
+#&gt; 
+#&gt; -- File: /usr/local/Cellar/r/3.5.2_2/lib/R/library/base/Meta/package.rds </div><div class='input'>
+<span class='no'>df</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/utils/topics/head'>head</a></span>(<span class='kw pkg'>datasets</span><span class='kw ns'>::</span><span class='no'><a href='https://www.rdocumentation.org/packages/datasets/topics/zCO2'>CO2</a></span>)
+<span class='fu'>tospongebob</span>(<span class='no'>df</span>)</div><div class='output co'>#&gt;   plAnt   TypE  TReAtmeNT cOnC uPTaKe
+#&gt; 1   QN1 QuEbEC nOnCHillED   95   16.0
+#&gt; 2   QN1 QuEbEC nOnCHillED  175   30.4
+#&gt; 3   QN1 QuEbEC nOnCHillED  250   34.8
+#&gt; 4   QN1 QuEbEC nOnCHillED  350   37.2
+#&gt; 5   QN1 QuEbEC nOnCHillED  500   35.3
+#&gt; 6   QN1 QuEbEC nOnCHillED  675   39.2</div><div class='input'>
+<span class='fu'>tospongebob</span>(<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/summary'>summary</a></span>(<span class='no'>df</span>))</div><div class='output co'>#&gt;      PlanT            TYpE        TReATmenT      conC           UpTaKE     
+#&gt;  Qn1    :6   quEBEc     :6   NoNCHilLEd:6   MIN.   : 95.0   miN.   :16.00  
+#&gt;  qN2    :0   MisSisSiPPi:0   ChILlED   :0   1St qU.:193.8   1sT qu.:31.50  
+#&gt;  Qn3    :0                                  MEdiaN :300.0   meDIan :35.05  
+#&gt;  qc1    :0                                  meAn   :340.8   MEAn   :32.15  
+#&gt;  QC3    :0                                  3RD qU.:462.5   3Rd QU.:36.73  
+#&gt;  QC2    :0                                  MAx.   :675.0   MaX.   :39.20  
+#&gt;  (othEr):0                                                                 </div><div class='input'>
+<span class='no'>nicktoons</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/list'>list</a></span>(
+    <span class='kw'>spongebob</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/list'>list</a></span>(
+        <span class='kw'>episodes</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='st'>"Help Wanted"</span>, <span class='st'>"Reef Blower"</span>, <span class='st'>"Tea at the Treedome"</span>),
+        <span class='kw'>characters</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='st'>"SpongeBob"</span>, <span class='st'>"Patrick"</span>, <span class='st'>"Squidward"</span>, <span class='st'>"Sandy"</span>)
+    ),
+    <span class='kw'>hey_arnold</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/list'>list</a></span>(
+        <span class='kw'>episodes</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='st'>"Downtown as Fruits"</span>, <span class='st'>"Eugene's Bike"</span>),
+        <span class='kw'>characters</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='st'>"Arnold"</span>, <span class='st'>"Gerald"</span>, <span class='st'>"Helga"</span>)
+    )
+)
+<span class='fu'>tospongebob</span>(<span class='no'>nicktoons</span>)</div><div class='output co'>#&gt; $SPoNGeBOb
+#&gt; $SPoNGeBOb$EpisOdes
+#&gt; [1] "HELp WANtEd"         "Reef BlOWeR"         "tEa at ThE TReeDOmE"
+#&gt; 
+#&gt; $SPoNGeBOb$chaRaCterS
+#&gt; [1] "sPoNGEbob" "PAtRicK"   "squIdwARD" "SAnDy"    
+#&gt; 
+#&gt; 
+#&gt; $HEy_ArnOld
+#&gt; $HEy_ArnOld$ePIsODeS
+#&gt; [1] "dOwnTOwN AS frUitS" "EuGENe'S biKe"     
+#&gt; 
+#&gt; $HEy_ArnOld$ChaRACtERs
+#&gt; [1] "aRnOlD" "GeRaLd" "HelGa" 
+#&gt; 
+#&gt; </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
@@ -155,6 +250,8 @@ caSe</a>.</p>
       <li><a href="#arguments">Arguments</a></li>
       
       <li><a href="#value">Value</a></li>
+
+      <li><a href="#details">Details</a></li>
       
       <li><a href="#examples">Examples</a></li>
     </ul>

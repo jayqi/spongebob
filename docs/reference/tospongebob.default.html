@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>ASCII Spongebob : AsCIi sPOngEbob — ascii_spongebob • spongebob</title>
+<title>SpongeBob-Case Conversion for List-like Objects — tospongebob.default • spongebob</title>
 
 <!-- jquery -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
@@ -32,10 +32,15 @@
 
   <link href="../extra.css" rel="stylesheet">
   
-<meta property="og:title" content="ASCII Spongebob : AsCIi sPOngEbob — ascii_spongebob" />
+<meta property="og:title" content="SpongeBob-Case Conversion for List-like Objects — tospongebob.default" />
 
-<meta property="og:description" content="ASCII Mocking Spongebob used by spongebobsay.
-aSCIi mOckiNg SPOngEboB uSED bY spongebobsay." />
+<meta property="og:description" content="Convert list-like objects to
+Mocking SpongeBob
+case. This is the default S3 method the S3 generic
+tospongebob. Generally, you will not need to use this method
+directly; instead, use tospongebob. If you really need to use
+this method, you will need to do spongebob:::tospongebob.default
+because it is an internal method." />
 <meta name="twitter:card" content="summary" />
 
 
@@ -105,63 +110,81 @@ aSCIi mOckiNg SPOngEboB uSED bY spongebobsay." />
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>ASCII Spongebob : AsCIi sPOngEbob</h1>
-    <small class="dont-index">Source: <a href='https://github.com/jayqi/spongebob/blob/master/R/spongebobsay.R'><code>R/spongebobsay.R</code></a></small>
-    <div class="hidden name"><code>ascii_spongebob.Rd</code></div>
+    <h1>SpongeBob-Case Conversion for List-like Objects</h1>
+    <small class="dont-index">Source: <a href='https://github.com/jayqi/spongebob/blob/master/R/tospongebob.R'><code>R/tospongebob.R</code></a></small>
+    <div class="hidden name"><code>tospongebob.default.Rd</code></div>
     </div>
 
     <div class="ref-description">
     
-    <p>ASCII Mocking Spongebob used by <code><a href='spongebobsay.html'>spongebobsay</a></code>.</p>
-<p>aSCIi mOckiNg SPOngEboB uSED bY <code><a href='spongebobsay.html'>spongebobsay</a></code>.</p>
+    <p>Convert list-like objects to
+<a href='https://knowyourmeme.com/memes/mocking-spongebob'>Mocking SpongeBob
+case</a>. This is the default S3 method the S3 generic
+<code><a href='tospongebob.html'>tospongebob</a></code>. Generally, you will not need to use this method
+directly; instead, use <code><a href='tospongebob.html'>tospongebob</a></code>. If you really need to use
+this method, you will need to do <code>spongebob:::tospongebob.default</code>
+because it is an internal method.</p>
     
     </div>
 
-    <pre class="usage"><span class='fu'>ascii_spongebob</span>(<span class='kw'>print</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</pre>
+    <pre class="usage"><span class='co'># S3 method for default</span>
+<span class='fu'><a href='tospongebob.html'>tospongebob</a></span>(<span class='no'>x</span>, <span class='no'>...</span>, <span class='kw'>convert.names</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>print</th>
-      <td><p>a length-1 logical flag for whether to print output to console.</p></td>
+      <th>x</th>
+      <td><p>object with text to be converted to Mocking SpongeBob case.</p></td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td><p>onlY hERe tO sATisFy R CMd CHeCk.</p></td>
+    </tr>
+    <tr>
+      <th>convert.names</th>
+      <td><p>logical, indicating whether or not to convert the names
+of the object</p></td>
     </tr>
     </table>
     
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>a character string containing the ASCII art. Use
-<code><a href='https://www.rdocumentation.org/packages/base/topics/cat'>cat</a></code> to print with proper formatting.</p>
-<p>A CHaRACtER stRINg cONtaINiNG ThE ASciI ARt. uSe <code><a href='https://www.rdocumentation.org/packages/base/topics/cat'>cat</a></code> TO
-prInT WiTH prOper FORmatTiNg.</p>
+    <p>object with its text converted to Mocking SpongeBob case. ObjECt WiTH
+iTS tEXt CONvErTeD TO mOCkinG SponGEBob CasE.</p>
     
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
-    <div class='dont-index'><p><code><a href='spongebobsay.html'>spongebobsay</a></code></p></div>
+    <div class='dont-index'><p><code><a href='tospongebob.html'>tospongebob</a></code></p></div>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'>ascii_spongebob</span>()</div><div class='output co'>#&gt;          *
-#&gt;           *
-#&gt;      ----//-------
-#&gt;      \..C/--..--/ \   `A
-#&gt;       (@ )  ( @) \  \// |w
-#&gt;        \          \  \---/
-#&gt;         HGGGGGGG    \    /`
-#&gt;         V `---------`--'
-#&gt;             &lt;&lt;    &lt;&lt;
-#&gt;            ###   ###</div><div class='input'>
-<span class='no'>art</span> <span class='kw'>&lt;-</span> <span class='fu'>ascii_spongebob</span>(<span class='kw'>print</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)
-<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/cat'>cat</a></span>(<span class='no'>art</span>)</div><div class='output co'>#&gt;          *
-#&gt;           *
-#&gt;      ----//-------
-#&gt;      \..C/--..--/ \   `A
-#&gt;       (@ )  ( @) \  \// |w
-#&gt;        \          \  \---/
-#&gt;         HGGGGGGG    \    /`
-#&gt;         V `---------`--'
-#&gt;             &lt;&lt;    &lt;&lt;
-#&gt;            ###   ###</div></pre>
+    <pre class="examples"><div class='input'><span class='no'>nicktoons</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/list'>list</a></span>(
+    <span class='kw'>spongebob</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/list'>list</a></span>(
+        <span class='kw'>episodes</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='st'>"Help Wanted"</span>, <span class='st'>"Reef Blower"</span>, <span class='st'>"Tea at the Treedome"</span>),
+        <span class='kw'>characters</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='st'>"SpongeBob"</span>, <span class='st'>"Patrick"</span>, <span class='st'>"Squidward"</span>, <span class='st'>"Sandy"</span>)
+    ),
+    <span class='kw'>hey_arnold</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/list'>list</a></span>(
+        <span class='kw'>episodes</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='st'>"Downtown as Fruits"</span>, <span class='st'>"Eugene's Bike"</span>),
+        <span class='kw'>characters</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='st'>"Arnold"</span>, <span class='st'>"Gerald"</span>, <span class='st'>"Helga"</span>)
+    )
+)
+<span class='kw pkg'>spongebob</span><span class='kw ns'>:::</span><span class='fu'><a href='https://www.rdocumentation.org/packages/spongebob/topics/tospongebob.default'>tospongebob.default</a></span>(<span class='no'>nicktoons</span>)</div><div class='output co'>#&gt; $SpOnGebOB
+#&gt; $SpOnGebOB$ePIsoDEs
+#&gt; [1] "helP wAnteD"         "rEeF blOweR"         "TeA at THE treEDoME"
+#&gt; 
+#&gt; $SpOnGebOB$chARactERS
+#&gt; [1] "sPOngEbOb" "PAtriCk"   "squIDwARd" "SanDy"    
+#&gt; 
+#&gt; 
+#&gt; $Hey_aRNold
+#&gt; $Hey_aRNold$ePisoDeS
+#&gt; [1] "doWntoWn AS fRuITS" "EUgENE's BikE"     
+#&gt; 
+#&gt; $Hey_aRNold$CharActeRS
+#&gt; [1] "aRNolD" "gERAld" "heLga" 
+#&gt; 
+#&gt; </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>

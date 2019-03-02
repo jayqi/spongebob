@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>ASCII Spongebob : AsCIi sPOngEbob — ascii_spongebob • spongebob</title>
+<title>SpongeBob-Case Conversion for Data Frames — tospongebob.data.frame • spongebob</title>
 
 <!-- jquery -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
@@ -32,10 +32,18 @@
 
   <link href="../extra.css" rel="stylesheet">
   
-<meta property="og:title" content="ASCII Spongebob : AsCIi sPOngEbob — ascii_spongebob" />
+<meta property="og:title" content="SpongeBob-Case Conversion for Data Frames — tospongebob.data.frame" />
 
-<meta property="og:description" content="ASCII Mocking Spongebob used by spongebobsay.
-aSCIi mOckiNg SPOngEboB uSED bY spongebobsay." />
+<meta property="og:description" content="Convert data.frame objects to
+Mocking SpongeBob
+case. This is the S3 method for data.frame objects. Generally, you will not
+be using this method directly; instead, use the S3 generic
+tospongebob. If you really need to use this method, you will
+need to do spongebob:::tospongebob.data.frame because it is an
+internal method.
+This method will convert character and factor columns to Mocking SpongeBob
+case. It will also optionlly convert column and row names, enabled by
+default." />
 <meta name="twitter:card" content="summary" />
 
 
@@ -105,63 +113,79 @@ aSCIi mOckiNg SPOngEboB uSED bY spongebobsay." />
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>ASCII Spongebob : AsCIi sPOngEbob</h1>
-    <small class="dont-index">Source: <a href='https://github.com/jayqi/spongebob/blob/master/R/spongebobsay.R'><code>R/spongebobsay.R</code></a></small>
-    <div class="hidden name"><code>ascii_spongebob.Rd</code></div>
+    <h1>SpongeBob-Case Conversion for Data Frames</h1>
+    <small class="dont-index">Source: <a href='https://github.com/jayqi/spongebob/blob/master/R/tospongebob.R'><code>R/tospongebob.R</code></a></small>
+    <div class="hidden name"><code>tospongebob.data.frame.Rd</code></div>
     </div>
 
     <div class="ref-description">
     
-    <p>ASCII Mocking Spongebob used by <code><a href='spongebobsay.html'>spongebobsay</a></code>.</p>
-<p>aSCIi mOckiNg SPOngEboB uSED bY <code><a href='spongebobsay.html'>spongebobsay</a></code>.</p>
+    <p>Convert data.frame objects to
+<a href='https://knowyourmeme.com/memes/mocking-spongebob'>Mocking SpongeBob
+case</a>. This is the S3 method for data.frame objects. Generally, you will not
+be using this method directly; instead, use the S3 generic
+<code><a href='tospongebob.html'>tospongebob</a></code>. If you really need to use this method, you will
+need to do <code>spongebob:::tospongebob.data.frame</code> because it is an
+internal method.</p>
+<p>This method will convert character and factor columns to Mocking SpongeBob
+case. It will also optionlly convert column and row names, enabled by
+default.</p>
     
     </div>
 
-    <pre class="usage"><span class='fu'>ascii_spongebob</span>(<span class='kw'>print</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</pre>
+    <pre class="usage"><span class='co'># S3 method for data.frame</span>
+<span class='fu'><a href='tospongebob.html'>tospongebob</a></span>(<span class='no'>x</span>, <span class='no'>...</span>, <span class='kw'>convert.rownames</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
+  <span class='kw'>convert.colnames</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>print</th>
-      <td><p>a length-1 logical flag for whether to print output to console.</p></td>
+      <th>x</th>
+      <td><p>data.frame with text to be converted to Mocking SpongeBob case.</p></td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td><p>onlY hERe tO sATisFy R CMd CHeCk.</p></td>
+    </tr>
+    <tr>
+      <th>convert.rownames</th>
+      <td><p>logical, indicating whether or not to convert the
+row names of the data.frame</p></td>
+    </tr>
+    <tr>
+      <th>convert.colnames</th>
+      <td><p>logical, indicating whether or not to convert the
+column names of the data.frame</p></td>
     </tr>
     </table>
     
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>a character string containing the ASCII art. Use
-<code><a href='https://www.rdocumentation.org/packages/base/topics/cat'>cat</a></code> to print with proper formatting.</p>
-<p>A CHaRACtER stRINg cONtaINiNG ThE ASciI ARt. uSe <code><a href='https://www.rdocumentation.org/packages/base/topics/cat'>cat</a></code> TO
-prInT WiTH prOper FORmatTiNg.</p>
+    <p>data.frame with its text converted to Mocking SpongeBob case.</p>
     
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
-    <div class='dont-index'><p><code><a href='spongebobsay.html'>spongebobsay</a></code></p></div>
+    <div class='dont-index'><p><code><a href='tospongebob.html'>tospongebob</a></code></p></div>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'>ascii_spongebob</span>()</div><div class='output co'>#&gt;          *
-#&gt;           *
-#&gt;      ----//-------
-#&gt;      \..C/--..--/ \   `A
-#&gt;       (@ )  ( @) \  \// |w
-#&gt;        \          \  \---/
-#&gt;         HGGGGGGG    \    /`
-#&gt;         V `---------`--'
-#&gt;             &lt;&lt;    &lt;&lt;
-#&gt;            ###   ###</div><div class='input'>
-<span class='no'>art</span> <span class='kw'>&lt;-</span> <span class='fu'>ascii_spongebob</span>(<span class='kw'>print</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)
-<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/cat'>cat</a></span>(<span class='no'>art</span>)</div><div class='output co'>#&gt;          *
-#&gt;           *
-#&gt;      ----//-------
-#&gt;      \..C/--..--/ \   `A
-#&gt;       (@ )  ( @) \  \// |w
-#&gt;        \          \  \---/
-#&gt;         HGGGGGGG    \    /`
-#&gt;         V `---------`--'
-#&gt;             &lt;&lt;    &lt;&lt;
-#&gt;            ###   ###</div></pre>
+    <pre class="examples"><div class='input'><span class='no'>df1</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/utils/topics/head'>head</a></span>(<span class='kw pkg'>datasets</span><span class='kw ns'>::</span><span class='no'><a href='https://www.rdocumentation.org/packages/datasets/topics/zCO2'>CO2</a></span>)
+<span class='fu'><a href='tospongebob.html'>tospongebob</a></span>(<span class='no'>df1</span>)</div><div class='output co'>#&gt;   PLAnt   tYPe  trEaTmENt cONc UPTakE
+#&gt; 1   qN1 QUeBEc nonCHilLed   95   16.0
+#&gt; 2   qN1 QUeBEc nonCHilLed  175   30.4
+#&gt; 3   qN1 QUeBEc nonCHilLed  250   34.8
+#&gt; 4   qN1 QUeBEc nonCHilLed  350   37.2
+#&gt; 5   qN1 QUeBEc nonCHilLed  500   35.3
+#&gt; 6   qN1 QUeBEc nonCHilLed  675   39.2</div><div class='input'>
+<span class='no'>df2</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/utils/topics/head'>head</a></span>(<span class='kw pkg'>datasets</span><span class='kw ns'>::</span><span class='no'><a href='https://www.rdocumentation.org/packages/datasets/topics/mtcars'>mtcars</a></span>)
+<span class='fu'><a href='tospongebob.html'>tospongebob</a></span>(<span class='no'>df2</span>)</div><div class='output co'>#&gt;                    mPg CYl Disp  hP dRaT    WT  QSEc vs Am geaR carB
+#&gt; mAZDa rX4         21.0   6  160 110 3.90 2.620 16.46  0  1    4    4
+#&gt; maZda Rx4 waG     21.0   6  160 110 3.90 2.875 17.02  0  1    4    4
+#&gt; daTSun 710        22.8   4  108  93 3.85 2.320 18.61  1  1    4    1
+#&gt; HoRNeT 4 DrIVe    21.4   6  258 110 3.08 3.215 19.44  1  0    3    1
+#&gt; hOrnET SpOrtaBOUt 18.7   8  360 175 3.15 3.440 17.02  0  0    3    2
+#&gt; VAliANt           18.1   6  225 105 2.76 3.460 20.22  1  0    3    1</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>

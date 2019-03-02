@@ -40,3 +40,6 @@ nicktoons <- list(
 )
 spongebob:::tospongebob.default(nicktoons)
 }
+\seealso{
+\code{\link{tospongebob}}
+}
