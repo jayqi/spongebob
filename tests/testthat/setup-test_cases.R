@@ -33,6 +33,43 @@ testList <- list(
                ) # /unnamed_list
            ) # /input
     )
+    , list(method = "tospongebob.array"
+           , input = list(
+               test_array = array(
+                   data = replicate(24, .generate_word())
+                   , dim = c(4,3,2)
+                   , dimnames = list(
+                       foo = replicate(4, .generate_word())
+                       , bar = replicate(3, .generate_word())
+                       , foobar = replicate(2, .generate_word())
+                   ) # /dimnames list
+               ) # /test_array array
+               , test_matrix = array(
+                   data = replicate(12, .generate_word())
+                   , dim = c(4,3)
+                   , dimnames = list(
+                       foo = replicate(4, .generate_word())
+                       , bar = replicate(3, .generate_word())
+                   ) # /dimnames list
+               ) # /test_matrix array
+           )
+    )
+    , list(method = "tospongebob.environment"
+           , input = list(
+                test_env = {
+                   bikini_bottom <- new.env()
+                   assign(x = "restaurants"
+                          , value = list("krusty crab", "chum bucket")
+                          , pos = bikini_bottom
+                   )
+                   assign(x= "people"
+                          , value = list("spongebob", "patrick", "sandy")
+                          , pos = bikini_bottom
+                   )
+                   bikini_bottom
+                }
+           )
+    )
     , list(method = "tospongebob.data.frame"
            , input = list(
                mtcars = datasets::mtcars
@@ -60,6 +97,24 @@ testList <- list(
                with_legend = {(ggplot2::ggplot(datasets::CO2)
                               + ggplot2::geom_boxplot(ggplot2::aes_string("Treatment", "conc"))
                )} # / with_legend
+           )
+    )
+    , list(method = "tospongebob.matrix"
+           , input = list(
+               test_matrix = matrix(
+                   data = replicate(12, .generate_word())
+                   , nrow = 4
+                   , ncol = 3
+                   , dimnames = list(
+                       foo = replicate(4, .generate_word())
+                       , bar = replicate(3, .generate_word())
+                   ) # /dimnames list
+               ) # /test_matrix matrix
+           )
+    )
+    , list(method = "tospongebob.table"
+           , input = list(
+               summary = summary(datasets::CO2)
            )
     )
 )

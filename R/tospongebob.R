@@ -30,8 +30,12 @@
 #'
 #' Additional S3 methods for the following classes have been implemented:
 #' \describe{
-#'     \item{\bold{\code{\link{tospongebob.data.frame}}}}{: convert row names, column
-#'     names, and convertible columns of a data.frame}
+#'     \item{\bold{\code{tospongebob.array}}}{: convert data and dimnames of an
+#'     array}
+#'     \item{\bold{\code{\link{tospongebob.data.frame}}}}{: convert row names,
+#'     column names, and convertible columns of a data.frame}
+#'     \item{\bold{\code{tospongebob.environment}}}{: create a copy of an
+#'     environment with its objects converted}
 #'     \item{\bold{\code{tospongebob.factor}}}{: convert levels of factor
 #'     vectors}
 #'     \item{\bold{\code{tospongebob.fortune}}}{: convert the content of a
@@ -40,6 +44,10 @@
 #'     character vector, convert, and then combine into one string block}
 #'     \item{\bold{\code{tospongebob.ggplot}}}{: convert text labels in ggplot
 #'     object}
+#'     \item{\bold{\code{tospongebob.table}}}{: convert data and dimnames of a
+#'     matrix}
+#'     \item{\bold{\code{tospongebob.table}}}{: convert data and dimnames of a
+#'     table}
 #' }
 #' @examples
 #' tospongebob("SpongeBob-Case Conversion")
@@ -169,6 +177,7 @@ tospongebob.character <- function(x, ..., convert.names = TRUE) {
     return(x)
 }
 
+
 #' @title SpongeBob-Case Conversion for List-like Objects
 #' @name tospongebob.default
 #' @description Convert list-like objects to
@@ -220,6 +229,23 @@ tospongebob.default <- function(x, ..., convert.names = TRUE) {
     }
     return(x)
 }
+
+# ==================================
+# ========= OTHER METHODS ==========
+# ==================================
+
+# == S3 method for arrays ==
+# Convert data and dimnames for arrays
+#' @rdname tospongebob
+#' @export
+tospongebob.array <- function(x, ...) {
+    data <- tospongebob(as.vector(x))
+    dim <- attr(x, 'dim')
+    dimnames <- tospongebob(attr(x, 'dimnames'))
+
+    return(array(data = data, dim = dim, dimnames = dimnames))
+}
+
 
 #' @title SpongeBob-Case Conversion for Data Frames
 #' @name tospongebob.data.frame
@@ -280,6 +306,22 @@ tospongebob.fortune <- function(x, ...) {
     return(tospongebob.default(x, convert.names = FALSE))
 }
 
+# == S3 method for environments ==
+# Create new env with same parent with all contained objects converted
+#' @rdname tospongebob
+#' @export
+tospongebob.environment <- function(x, ...) {
+    e <- new.env(parent = parent.env(x))
+    for (objname in ls(x)) {
+        assign(
+            x = tospongebob(objname)
+            , value = tospongebob(get(objname, pos = x))
+            , pos = e
+        )
+    }
+    return(e)
+}
+
 # == S3 method for functions ==
 # Deparse into character vector and convert
 # Paste into one block for display
@@ -306,4 +348,21 @@ tospongebob.ggplot <- function(x, ...) {
                                           )
 
     return(x)
+}
+
+# == S3 method for matrix ==
+# Convert using array method, since matrix is just special 2D case
+#' @rdname tospongebob
+#' @export
+tospongebob.matrix <- function(x, ...) {
+    return(tospongebob.array(x))
+}
+
+# == S3 method for tables ==
+# Convert using array method, and then change back to a table
+#' @rdname tospongebob
+#' @export
+tospongebob.table <- function(x, ...) {
+    arr <- tospongebob.array(x)
+    return(as.table(arr))
 }
