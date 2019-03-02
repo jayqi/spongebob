@@ -2,37 +2,18 @@
 % Please edit documentation in R/tospongebob.R
 \name{tospongebob}
 \alias{tospongebob}
-\alias{tospongebob.character}
-\alias{tospongebob.default}
 \alias{tospongebob.factor}
-\alias{tospongebob.data.frame}
 \alias{tospongebob.fortune}
 \alias{tospongebob.function}
 \alias{tospongebob.ggplot}
 \title{SpongeBob-Case Conversion : sPOngEBOb-CasE cOnVErsIoN}
 \usage{
-tospongebob(x)
-
-\method{tospongebob}{character}(x, convert.names = TRUE)
-
-\method{tospongebob}{default}(x, convert.names = TRUE)
-
-\method{tospongebob}{factor}(x)
-
-\method{tospongebob}{data.frame}(x, convert.rownames = TRUE,
-  convert.colnames = TRUE)
-
-\method{tospongebob}{fortune}(x)
-
-\method{tospongebob}{function}(x)
-
-\method{tospongebob}{ggplot}(x)
+tospongebob(x, ...)
 }
 \arguments{
 \item{x}{object with text to be converted to Mocking SpongeBob case.}
 
-\item{convert.names}{logical, indicating whether or not to convert the names
-of the object}
+\item{...}{onlY hERe tO sATisFy R CMd CHeCk.}
 }
 \value{
 object with its text converted to Mocking SpongeBob case. ObjECt WiTH
@@ -54,20 +35,20 @@ APprOPrIAtELy fInd tEXt aNd cONvERT tHEm.
 \details{
 This section describes the (non-exported) S3 methods in more detail.
 
-The core \bold{\code{tospongebob.character}} method takes an input character
+The core \bold{\code{\link{tospongebob.character}}} method takes an input character
 vector and returns the same vector with its elements converted to Mocking
 SpongeBob case. Names of the vector are also converted unless parameter
 \code{convert.names = FALSE}. This method is then leveraged by all other
 methods.
 
-The default \bold{\code{tospongebob.default}} method will iterate through any
+The default \bold{\code{\link{tospongebob.default}}} method will iterate through any
 elements of list-like objects and attempt to convert those. It will also
 convert the names of the object unless parameter \code{convert.names = FALSE}.
 NULL values are passed through as NULL.
 
 Additional S3 methods for the following classes have been implemented:
 \describe{
-    \item{\bold{\code{tospongebob.data.frame}}}{: convert row names, column
+    \item{\bold{\code{\link{tospongebob.data.frame}}}}{: convert row names, column
     names, and convertible columns of a data.frame}
     \item{\bold{\code{tospongebob.factor}}}{: convert levels of factor
     vectors}
@@ -85,7 +66,7 @@ tospongebob(c("S3 generic function", "Mocking SpongeBob case"))
 
 tospongebob(packageDescription("base"))
 
-df <- head(CO2)
+df <- head(datasets::CO2)
 tospongebob(df)
 
 nicktoons <- list(
