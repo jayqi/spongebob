@@ -20,7 +20,7 @@ for (test in testList) {
 
         test_that(sprintf("tospongebob properly dispatches to %s", test[["method"]]), {
 
-            expect_identical(
+            expect_equal(
                 object = {
                     set.seed(42)
                     tospongebob(test[["input"]][[inputName]])

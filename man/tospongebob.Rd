@@ -2,13 +2,33 @@
 % Please edit documentation in R/tospongebob.R
 \name{tospongebob}
 \alias{tospongebob}
+\alias{tospongebob.array}
 \alias{tospongebob.factor}
 \alias{tospongebob.fortune}
+\alias{tospongebob.environment}
 \alias{tospongebob.function}
 \alias{tospongebob.ggplot}
+\alias{tospongebob.matrix}
+\alias{tospongebob.table}
 \title{SpongeBob-Case Conversion : sPOngEBOb-CasE cOnVErsIoN}
 \usage{
 tospongebob(x, ...)
+
+\method{tospongebob}{array}(x, ...)
+
+\method{tospongebob}{factor}(x, ...)
+
+\method{tospongebob}{fortune}(x, ...)
+
+\method{tospongebob}{environment}(x, ...)
+
+\method{tospongebob}{function}(x, ...)
+
+\method{tospongebob}{ggplot}(x, ...)
+
+\method{tospongebob}{matrix}(x, ...)
+
+\method{tospongebob}{table}(x, ...)
 }
 \arguments{
 \item{x}{object with text to be converted to Mocking SpongeBob case.}
@@ -48,8 +68,12 @@ NULL values are passed through as NULL.
 
 Additional S3 methods for the following classes have been implemented:
 \describe{
-    \item{\bold{\code{\link{tospongebob.data.frame}}}}{: convert row names, column
-    names, and convertible columns of a data.frame}
+    \item{\bold{\code{tospongebob.array}}}{: convert data and dimnames of an
+    array}
+    \item{\bold{\code{\link{tospongebob.data.frame}}}}{: convert row names,
+    column names, and convertible columns of a data.frame}
+    \item{\bold{\code{tospongebob.environment}}}{: create a copy of an
+    environment with its objects converted}
     \item{\bold{\code{tospongebob.factor}}}{: convert levels of factor
     vectors}
     \item{\bold{\code{tospongebob.fortune}}}{: convert the content of a
@@ -58,6 +82,10 @@ Additional S3 methods for the following classes have been implemented:
     character vector, convert, and then combine into one string block}
     \item{\bold{\code{tospongebob.ggplot}}}{: convert text labels in ggplot
     object}
+    \item{\bold{\code{tospongebob.table}}}{: convert data and dimnames of a
+    matrix}
+    \item{\bold{\code{tospongebob.table}}}{: convert data and dimnames of a
+    table}
 }
 }
 \examples{
