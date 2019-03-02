@@ -29,6 +29,12 @@
 
     words <- unlist(strsplit(charVec, "\\s+"))
 
+    # words will be null if charVec was character(0)
+    # that will have nchar integer(0) so return "" instead
+    if (is.null(words)) {
+        return("")
+    }
+
     return(words[which.max(nchar(words))])
 }
 
@@ -36,6 +42,7 @@
 # Takes character strings defining symbols that will be the left boundary,
 # right boundary, and tail of the speech bubble
 # Returns a closure that takes a character string input
+#' @importFrom utils capture.output
 .make_ascii_maker <- function(left, right, top, bottom, tail) {
     # Input validation
     # TODO: Input validation. is.character, length == 1, nchar == 1 or 2
@@ -52,27 +59,30 @@
         # Convert input to SpongeBob case
         # If output is not a character vector, then convert it to
         # one by capturing the output of its print method
+        # at a minimum this returns character(0)
         what <- tospongebob(what)
         if (!is.character(what)) {
-            what <- capture.output(print(tospongebob(what)))
+            what <- utils::capture.output(print(tospongebob(what)))
         }
 
         # Figure out maximum word
         longestWord <- .longest_word(what)
 
-        # If width is set, validate that it's long enough
-
-
         # If width is not NULL, validate that it's good
         if (!is.null(width)) {
-            if (length(width) != 1
-                | !all.equal(width, round(width))
-                | round(width) < 1
-            ){
+
+            # Input validation
+            if (length(width) != 1 | !is.numeric(width)) {
                 msg <- "Argument width is not a length-1 positive integer"
                 stop(paste(msg, tospongebob(msg)))
             }
-            if (!is.null(width) & width < nchar(longestWord)) {
+            if (!identical(width, round(width)) | round(width) < 1) {
+                msg <- "Argument width is not a length-1 positive integer"
+                stop(paste(msg, tospongebob(msg)))
+            }
+
+            # If width is set, validate that it's long enough
+            if (width < nchar(longestWord)) {
                 msg <- sprintf(
                     "Specified width %d is less than longest word '%s' in input."
                     , width
@@ -89,7 +99,7 @@
         # Split text up into lines by width
         txt <- strwrap(what, width = width)
         txt <- tospongebob(txt)
-        maxLength <- max(nchar(txt))
+        maxLength <- max(nchar(txt), 0) # need to account for character(0)
 
         # Add the speech bubble left-right boundaries
         txt <- sprintf(sprintf("%%-%ds", maxLength), txt)

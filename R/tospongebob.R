@@ -12,26 +12,25 @@
 #' VEcTOr WItH cASe-cONVeRTed ELeMenTS. foR oThER objECTs, iT wIlL aTtemPT tO
 #' APprOPrIAtELy fInd tEXt aNd cONvERT tHEm.
 #' @param x object with text to be converted to Mocking SpongeBob case.
-#' @param convert.names logical, indicating whether or not to convert the names
-#' of the object
+#' @param ... onlY hERe tO sATisFy R CMd CHeCk.
 #' @return object with its text converted to Mocking SpongeBob case. ObjECt WiTH
 #' iTS tEXt CONvErTeD TO mOCkinG SponGEBob CasE.
 #' @details This section describes the (non-exported) S3 methods in more detail.
 #'
-#' The core \bold{\code{tospongebob.character}} method takes an input character
+#' The core \bold{\code{\link{tospongebob.character}}} method takes an input character
 #' vector and returns the same vector with its elements converted to Mocking
 #' SpongeBob case. Names of the vector are also converted unless parameter
 #' \code{convert.names = FALSE}. This method is then leveraged by all other
 #' methods.
 #'
-#' The default \bold{\code{tospongebob.default}} method will iterate through any
+#' The default \bold{\code{\link{tospongebob.default}}} method will iterate through any
 #' elements of list-like objects and attempt to convert those. It will also
 #' convert the names of the object unless parameter \code{convert.names = FALSE}.
 #' NULL values are passed through as NULL.
 #'
 #' Additional S3 methods for the following classes have been implemented:
 #' \describe{
-#'     \item{\bold{\code{tospongebob.data.frame}}}{: convert row names, column
+#'     \item{\bold{\code{\link{tospongebob.data.frame}}}}{: convert row names, column
 #'     names, and convertible columns of a data.frame}
 #'     \item{\bold{\code{tospongebob.factor}}}{: convert levels of factor
 #'     vectors}
@@ -48,7 +47,7 @@
 #'
 #' tospongebob(packageDescription("base"))
 #'
-#' df <- head(CO2)
+#' df <- head(datasets::CO2)
 #' tospongebob(df)
 #'
 #' nicktoons <- list(
@@ -63,16 +62,34 @@
 #' )
 #' tospongebob(nicktoons)
 #' @export
-tospongebob <- function(x) {
+tospongebob <- function(x, ...) {
     UseMethod("tospongebob", x)
 }
 
-# == S3 method for character ==
-# Core method behind tospongebob generic
-# Converts a character vector to spongebob case
-#' @rdname tospongebob
+
+#' @title SpongeBob-Case Conversion for Character Vectors
+#' @name tospongebob.character
+#' @description Convert character vectors to
+#' \href{https://knowyourmeme.com/memes/mocking-spongebob}{Mocking SpongeBob
+#' case}. This is an S3 method for character vectors. Generally, you will not be
+#' using this method directly; instead, use the S3 generic
+#' \code{\link{tospongebob}}. If you really need to use this method, you will
+#' need to do \code{spongebob:::tospongebob.character} because it is an internal
+#' method.
+#' @param x character vector with text to be converted to Mocking SpongeBob case.
+#' @param ... onlY hERe tO sATisFy R CMd CHeCk.
+#' @param convert.names logical, indicating whether or not to convert the names
+#' of the object
+#' @return the input vector with its text converted to Mocking SpongeBob case.
+#' tHe inPuT VecTor WItH its TeXt ConvErTed To MOckInG SPoNGebOB cASe.
+#' @examples
+#' spongebob:::tospongebob.character("SpongeBob-Case Conversion")
+#' spongebob:::tospongebob.character(c(
+#'     "S3 generic function",
+#'     "Mocking SpongeBob case"
+#' ))
 #' @export
-tospongebob.character <- function(x, convert.names = TRUE) {
+tospongebob.character <- function(x, ..., convert.names = TRUE) {
 
     # Input validation
     if (!is.character(x)) {
@@ -152,11 +169,35 @@ tospongebob.character <- function(x, convert.names = TRUE) {
     return(x)
 }
 
-# == Default S3 method ==
-# Attempt to convert names and elements that are character
-#' @rdname tospongebob
+#' @title SpongeBob-Case Conversion for List-like Objects
+#' @name tospongebob.default
+#' @description Convert list-like objects to
+#' \href{https://knowyourmeme.com/memes/mocking-spongebob}{Mocking SpongeBob
+#' case}. This is the default S3 method the S3 generic
+#' \code{\link{tospongebob}}. Generally, you will not need to use this method
+#' directly; instead, use \code{\link{tospongebob}}. If you really need to use
+#' this method, you will need to do \code{spongebob:::tospongebob.default}
+#' because it is an internal method.
+#' @param x object with text to be converted to Mocking SpongeBob case.
+#' @param ... onlY hERe tO sATisFy R CMd CHeCk.
+#' @param convert.names logical, indicating whether or not to convert the names
+#' of the object
+#' @return object with its text converted to Mocking SpongeBob case. ObjECt WiTH
+#' iTS tEXt CONvErTeD TO mOCkinG SponGEBob CasE.
+#' @examples
+#' nicktoons <- list(
+#'     spongebob = list(
+#'         episodes = c("Help Wanted", "Reef Blower", "Tea at the Treedome"),
+#'         characters = c("SpongeBob", "Patrick", "Squidward", "Sandy")
+#'     ),
+#'     hey_arnold = list(
+#'         episodes = c("Downtown as Fruits", "Eugene's Bike"),
+#'         characters = c("Arnold", "Gerald", "Helga")
+#'     )
+#' )
+#' spongebob:::tospongebob.default(nicktoons)
 #' @export
-tospongebob.default <- function(x, convert.names = TRUE) {
+tospongebob.default <- function(x, ..., convert.names = TRUE) {
     # If NULL value, nothing to convert
     if (is.null(x)) {
         return(x)
@@ -180,20 +221,35 @@ tospongebob.default <- function(x, convert.names = TRUE) {
     return(x)
 }
 
-# == S3 method for factors ==
-# Convert levels
-#' @rdname tospongebob
-#' @export
-tospongebob.factor <- function(x) {
-    levels(x) <- tospongebob(levels(x))
-    return(x)
-}
-
-# == S3 method for data.frames ==
-# Convert row names, column names (names()), and character columns
-#' @rdname tospongebob
+#' @title SpongeBob-Case Conversion for Data Frames
+#' @name tospongebob.data.frame
+#' @description Convert data.frame objects to
+#' \href{https://knowyourmeme.com/memes/mocking-spongebob}{Mocking SpongeBob
+#' case}. This is the S3 method for data.frame objects. Generally, you will not
+#' be using this method directly; instead, use the S3 generic
+#' \code{\link{tospongebob}}. If you really need to use this method, you will
+#' need to do \code{spongebob:::tospongebob.data.frame} because it is an
+#' internal method.
+#'
+#' This method will convert character and factor columns to Mocking SpongeBob
+#' case. It will also optionlly convert column and row names, enabled by
+#' default.
+#' @param x data.frame with text to be converted to Mocking SpongeBob case.
+#' @param ... onlY hERe tO sATisFy R CMd CHeCk.
+#' @param convert.rownames logical, indicating whether or not to convert the
+#' row names of the data.frame
+#' @param convert.colnames logical, indicating whether or not to convert the
+#' column names of the data.frame
+#' @return data.frame with its text converted to Mocking SpongeBob case.
+#' @examples
+#' df1 <- head(datasets::CO2)
+#' tospongebob(df)
+#'
+#' df2 <- head(datasets::mtcars)
+#' tospongebob(df)
 #' @export
 tospongebob.data.frame <- function(x
+                                   , ...
                                    , convert.rownames = TRUE
                                    , convert.colnames = TRUE) {
     # First convert row names
@@ -205,12 +261,21 @@ tospongebob.data.frame <- function(x
     return(tospongebob.default(x, convert.names = convert.colnames))
 }
 
+# == S3 method for factors ==
+# Convert levels
+#' @rdname tospongebob
+#' @export
+tospongebob.factor <- function(x, ...) {
+    levels(x) <- tospongebob(levels(x))
+    return(x)
+}
+
 # == S3 method for fortunes ==
 # Don't convert names because the print.fortune method
 # depends on them being named that way
 #' @rdname tospongebob
 #' @export
-tospongebob.fortune <- function(x) {
+tospongebob.fortune <- function(x, ...) {
     # Don't convert names because print.fortune depends on them
     return(tospongebob.default(x, convert.names = FALSE))
 }
@@ -220,7 +285,7 @@ tospongebob.fortune <- function(x) {
 # Paste into one block for display
 #' @rdname tospongebob
 #' @export
-tospongebob.function <- function(x) {
+tospongebob.function <- function(x, ...) {
     # Deparse into text, convert, and then collapse into one blob
     paste(tospongebob(deparse(x)), collapse = "\n")
 }
@@ -229,7 +294,7 @@ tospongebob.function <- function(x) {
 # Convert plot labels and levels for character/factor variables in data
 #' @rdname tospongebob
 #' @export
-tospongebob.ggplot <- function(x) {
+tospongebob.ggplot <- function(x, ...) {
     # Convert plot labels
     x[['labels']] <- tospongebob.default(x[['labels']], convert.names = FALSE)
 

@@ -8,7 +8,12 @@
 ^.*\.Rproj$
 ^\.Rproj\.user$
 
+# pkgdown
+^_pkgdown\.yml$
+^docs$
+
 # Other
 ^cran-comments\.md$
 ^.travis\.yml$
 ^appveyor\.yml$
+

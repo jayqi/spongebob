@@ -1,19 +1,21 @@
 Package: spongebob
 Type: Package
 Title: SpongeBob-Case Converter : spOngEboB-CASe CoNVertOR
-Version: 0.3.0
+Version: 0.3.0.9000
 Authors@R: c(
     person("Jay", "Qi", email = "jayqi.opensource@gmail.com", role = c("aut", "cre"))
     )
 Maintainer: Jay Qi <jayqi.opensource@gmail.com>
-Description: Convert character strings to Mocking SpongeBob case 
+Description: Convert text to Mocking SpongeBob case 
              <https://knowyourmeme.com/memes/mocking-spongebob> and show them 
              off in fun ways. 
-             coNvErt CharACtER strInGs to MOckiNG spOngEbOb caSE 
+             ConvERt TeXt TO MocKINg SPoNGEboB casE
              <https://knowyourmeme.com/memes/mocking-spongebob> aND shOw tHem 
              OFf IN Fun WayS. 
 Suggests:
-    testthat
+    testthat,
+    fortunes,
+    ggplot2
 License: BSD_3_clause + file LICENSE
 URL: https://github.com/jayqi/spongebob
 BugReports: https://github.com/jayqi/spongebob/issues
