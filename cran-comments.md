@@ -33,7 +33,11 @@ Table of Contents:
 
 ### Submission 1 on 2019-03-02
 
-Update with new functionality. `R CMD check` passed with `Status: OK`. Please see NEWS.md <https://github.com/jayqi/spongebob/blob/release/NEWS.md> for summary of changes and cran-comments.md <https://github.com/jayqi/spongebob/blob/release/cran-comments.md#v0.4.0> for test environment details. 
+Submission comment:
+
+> Update with new functionality. `R CMD check` passed with `Status: OK`. Please see NEWS.md <https://github.com/jayqi/spongebob/blob/release/NEWS.md> for summary of changes and cran-comments.md <https://github.com/jayqi/spongebob/blob/release/cran-comments.md#v0.4.0> for test environment details. 
+
+Submission accepted on 2019-03-02.
 
 <a name="v0.3.0"/> 
 
