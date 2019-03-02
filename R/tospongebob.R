@@ -42,9 +42,9 @@
 #'     \link[fortunes:fortunes]{fortunes::fortune} object}
 #'     \item{\bold{\code{tospongebob.function}}}{: deparse function into a
 #'     character vector, convert, and then combine into one string block}
-#'     \item{\bold{\code{tospongebob.ggplot}}}{: convert text labels in ggplot
-#'     object}
-#'     \item{\bold{\code{tospongebob.table}}}{: convert data and dimnames of a
+#'     \item{\bold{\code{tospongebob.ggplot}}}{: convert text labels in
+#'     \code{\link[ggplot2:ggplot]{ggplot2::ggplot}} object}
+#'     \item{\bold{\code{matrix}}}{: convert data and dimnames of a
 #'     matrix}
 #'     \item{\bold{\code{tospongebob.table}}}{: convert data and dimnames of a
 #'     table}
@@ -57,6 +57,8 @@
 #'
 #' df <- head(datasets::CO2)
 #' tospongebob(df)
+#'
+#' tospongebob(summary(df))
 #'
 #' nicktoons <- list(
 #'     spongebob = list(
@@ -96,6 +98,7 @@ tospongebob <- function(x, ...) {
 #'     "S3 generic function",
 #'     "Mocking SpongeBob case"
 #' ))
+#' @seealso \code{\link{tospongebob}}
 #' @export
 tospongebob.character <- function(x, ..., convert.names = TRUE) {
 
@@ -205,6 +208,7 @@ tospongebob.character <- function(x, ..., convert.names = TRUE) {
 #'     )
 #' )
 #' spongebob:::tospongebob.default(nicktoons)
+#' @seealso \code{\link{tospongebob}}
 #' @export
 tospongebob.default <- function(x, ..., convert.names = TRUE) {
     # If NULL value, nothing to convert
@@ -269,10 +273,11 @@ tospongebob.array <- function(x, ...) {
 #' @return data.frame with its text converted to Mocking SpongeBob case.
 #' @examples
 #' df1 <- head(datasets::CO2)
-#' tospongebob(df)
+#' tospongebob(df1)
 #'
 #' df2 <- head(datasets::mtcars)
-#' tospongebob(df)
+#' tospongebob(df2)
+#' @seealso \code{\link{tospongebob}}
 #' @export
 tospongebob.data.frame <- function(x
                                    , ...

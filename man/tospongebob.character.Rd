@@ -34,3 +34,6 @@ spongebob:::tospongebob.character(c(
     "Mocking SpongeBob case"
 ))
 }
+\seealso{
+\code{\link{tospongebob}}
+}

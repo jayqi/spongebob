@@ -30,6 +30,8 @@
 
 
 
+  <link href="../extra.css" rel="stylesheet">
+  
 <meta property="og:title" content="SpongeBob ASCII Messages : sPongEBoB aScii MesSAgEs — spongebobsay" />
 
 <meta property="og:description" content="A set of functions that generate SpongeBob ASCII art with speech
@@ -66,7 +68,7 @@ THe sTylE OF cOWsaY." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">spongebob</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.3.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.4.0</span>
       </span>
     </div>
 
@@ -119,23 +121,27 @@ THe sTylE OF <a href='https://en.wikipedia.org/wiki/Cowsay'>cOWsaY</a>.</p>
     
     </div>
 
-    <pre class="usage"><span class='fu'>spongebobsay</span>(<span class='no'>what</span>, <span class='kw'>print</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)
+    <pre class="usage"><span class='fu'>spongebobsay</span>(<span class='no'>what</span>, <span class='kw'>print</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>width</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)
 
-<span class='fu'>spongebobthink</span>(<span class='no'>what</span>, <span class='kw'>print</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)
+<span class='fu'>spongebobthink</span>(<span class='no'>what</span>, <span class='kw'>print</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>width</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)
 
-<span class='fu'>spongebobwhisper</span>(<span class='no'>what</span>, <span class='kw'>print</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</pre>
+<span class='fu'>spongebobwhisper</span>(<span class='no'>what</span>, <span class='kw'>print</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>width</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>what</th>
-      <td><p>a length-1 character string. A leNGTh-1 chARActeR StRInG.</p></td>
+      <td><p>an object accepted by <code><a href='tospongebob.html'>tospongebob</a></code></p></td>
     </tr>
     <tr>
       <th>print</th>
-      <td><p>a length-1 logical flag for whether to print output to console.
-A LenGTH-1 lOGicaL flaG foR wHethEr tO prInT ResUlt TO cONsolE.</p></td>
+      <td><p>a length-1 logical, indicating whether to print output to console.</p></td>
+    </tr>
+    <tr>
+      <th>width</th>
+      <td><p>a length-1 positive integer or numeric whole number specifying
+width to wrap text</p></td>
     </tr>
     </table>
     
@@ -146,11 +152,24 @@ A LenGTH-1 lOGicaL flaG foR wHethEr tO prInT ResUlt TO cONsolE.</p></td>
 <p>A CHaRACtER stRINg cONtaINiNG ThE ASciI ARt. uSe <code><a href='https://www.rdocumentation.org/packages/base/topics/cat'>cat</a></code> TO
 prInT WiTH prOper FORmatTiNg.</p>
     
+    <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
+
+    <p>These functions will convert the input to Mocking SpongeBob case
+using <code><a href='tospongebob.html'>tospongebob</a></code>. If the converted output is not already a
+character vector, it will be converted to such using
+<code><a href='https://www.rdocumentation.org/packages/base/topics/print'>print</a></code>.</p>
+<p>The ASCII SpongeBob graphic is available standalone using
+<code><a href='ascii_spongebob.html'>ascii_spongebob</a></code>.</p>
+    
+    <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
+
+    <div class='dont-index'><p><code><a href='tospongebob.html'>tospongebob</a></code>, <code><a href='ascii_spongebob.html'>ascii_spongebob</a></code></p></div>
+    
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='fu'>spongebobsay</span>(<span class='st'>"globalVariables is a hideous hack and I will never use it."</span>)</div><div class='output co'>#&gt;  ----------------------------------------- 
-#&gt; | GlobALvArIaBLes IS A hIdEoUs Hack And I |
-#&gt; | wiLl nEVer UsE it.                      |
+#&gt; | gLobAlVAriaBlES iS A hiDeoUS hacK ANd I |
+#&gt; | wILl NEvER uSe it.                      |
 #&gt;  ----------------------------------------- 
 #&gt;   \\
 #&gt;    \\    *
@@ -167,9 +186,9 @@ prInT WiTH prOper FORmatTiNg.</p>
     <span class='st'>"@hadley you shouldn't say you'll never use things when only two years
     later you think it's fine -- hadley"</span>
 )</div><div class='output co'>#&gt;  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ 
-#&gt; ( @HadLEY yOu sHouLDn'T Say YOU'll nEvEr )
-#&gt; ( uSE tHInGs whEn oNly Two yEArs LaTeR   )
-#&gt; ( YoU ThinK it'S FiNe -- HADlEy          )
+#&gt; ( @hadLEy YOu sHOuldN'T sAY You'lL nEVeR )
+#&gt; ( USe thINGs wHEn oNlY TWo YEArs LateR   )
+#&gt; ( You tHINk iT's fInE -- haDlEY          )
 #&gt;  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ 
 #&gt;    o
 #&gt;     o    *
@@ -186,9 +205,9 @@ prInT WiTH prOper FORmatTiNg.</p>
     <span class='st'>"it's still a hideous hack, but you just have to suck it up if you want
     your package on CRAN"</span>
 )</div><div class='output co'>#&gt;  ......................................... 
-#&gt; : It's STIll A hiDEOuS haCK, BuT yOU juST :
-#&gt; : HAVe tO SUcK IT up iF YoU WanT Your     :
-#&gt; : pACKage On CRaN                         :
+#&gt; : It'S stiLl a HideOus hACk, bUT You JuSt :
+#&gt; : HAve tO SUcK It Up iF YoU WAnt YOUr     :
+#&gt; : PackAGe oN CraN                         :
 #&gt;  ......................................... 
 #&gt;    .
 #&gt;     .    *
@@ -209,6 +228,10 @@ prInT WiTH prOper FORmatTiNg.</p>
       <li><a href="#arguments">Arguments</a></li>
       
       <li><a href="#value">Value</a></li>
+
+      <li><a href="#details">Details</a></li>
+
+      <li><a href="#see-also">See also</a></li>
       
       <li><a href="#examples">Examples</a></li>
     </ul>

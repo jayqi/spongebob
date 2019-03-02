@@ -13,22 +13,6 @@
 \title{SpongeBob-Case Conversion : sPOngEBOb-CasE cOnVErsIoN}
 \usage{
 tospongebob(x, ...)
-
-\method{tospongebob}{array}(x, ...)
-
-\method{tospongebob}{factor}(x, ...)
-
-\method{tospongebob}{fortune}(x, ...)
-
-\method{tospongebob}{environment}(x, ...)
-
-\method{tospongebob}{function}(x, ...)
-
-\method{tospongebob}{ggplot}(x, ...)
-
-\method{tospongebob}{matrix}(x, ...)
-
-\method{tospongebob}{table}(x, ...)
 }
 \arguments{
 \item{x}{object with text to be converted to Mocking SpongeBob case.}
@@ -80,9 +64,9 @@ Additional S3 methods for the following classes have been implemented:
     \link[fortunes:fortunes]{fortunes::fortune} object}
     \item{\bold{\code{tospongebob.function}}}{: deparse function into a
     character vector, convert, and then combine into one string block}
-    \item{\bold{\code{tospongebob.ggplot}}}{: convert text labels in ggplot
-    object}
-    \item{\bold{\code{tospongebob.table}}}{: convert data and dimnames of a
+    \item{\bold{\code{tospongebob.ggplot}}}{: convert text labels in
+    \code{\link[ggplot2:ggplot]{ggplot2::ggplot}} object}
+    \item{\bold{\code{matrix}}}{: convert data and dimnames of a
     matrix}
     \item{\bold{\code{tospongebob.table}}}{: convert data and dimnames of a
     table}
@@ -96,6 +80,8 @@ tospongebob(packageDescription("base"))
 
 df <- head(datasets::CO2)
 tospongebob(df)
+
+tospongebob(summary(df))
 
 nicktoons <- list(
     spongebob = list(

@@ -11,6 +11,7 @@
 # pkgdown
 ^_pkgdown\.yml$
 ^docs$
+^pkgdown$
 
 # Other
 ^cran-comments\.md$
