@@ -13,6 +13,22 @@
 \title{SpongeBob-Case Conversion : sPOngEBOb-CasE cOnVErsIoN}
 \usage{
 tospongebob(x, ...)
+
+\method{tospongebob}{array}(x, ...)
+
+\method{tospongebob}{factor}(x, ...)
+
+\method{tospongebob}{fortune}(x, ...)
+
+\method{tospongebob}{environment}(x, ...)
+
+\method{tospongebob}{function}(x, ...)
+
+\method{tospongebob}{ggplot}(x, ...)
+
+\method{tospongebob}{matrix}(x, ...)
+
+\method{tospongebob}{table}(x, ...)
 }
 \arguments{
 \item{x}{object with text to be converted to Mocking SpongeBob case.}

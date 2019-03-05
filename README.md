@@ -8,7 +8,7 @@ insPIreD bY A [twiTTeR CoNVErsaTIon StArtED By @jONgAllOwaY](https://twitter.com
 
 ## Installation. inSTAllATIoN.
 
-You can get the lATEst STAbLE vERsION of `spongebob` from [CRAN](https://CRAN.R-project.org/package=spongebob):
+You can get the LateST StABle VeRsIon of `spongebob` from [CRAN](https://CRAN.R-project.org/package=spongebob):
 
 ``` r
 install.packages('spongebob')
