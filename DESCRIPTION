@@ -7,16 +7,16 @@ Authors@R: c(
     )
 Maintainer: Jay Qi <jayqi.opensource@gmail.com>
 Description: Convert text (and text in R objects) to Mocking SpongeBob case 
-             <https://knowyourmeme.com/memes/mocking-spongebob> and show them 
+             <https://knowyourmeme.com/memes/mocking-spongebob> and show it 
              off in fun ways. 
              CoNVErT TexT (AnD TeXt In r ObJeCtS) To MOCkINg SpoNgebOb CAsE
-             <https://knowyourmeme.com/memes/mocking-spongebob> aND shOw tHem 
+             <https://knowyourmeme.com/memes/mocking-spongebob> aND shOw iT 
              OFf IN Fun WayS. 
 Suggests:
     testthat,
     fortunes,
     ggplot2
 License: BSD_3_clause + file LICENSE
-URL: https://github.com/jayqi/spongebob
+URL: https://jayqi.github.io/spongebob/, https://github.com/jayqi/spongebob
 BugReports: https://github.com/jayqi/spongebob/issues
 RoxygenNote: 6.1.1
