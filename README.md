@@ -1,6 +1,11 @@
 # spongebob : SPoNgeBOb-CAse cONveRSioN iN R
 
-[![CRAN\_Status\_Badge](https://www.r-pkg.org/badges/version-last-release/spongebob)](https://cran.r-project.org/package=spongebob) [![CRAN\_Download\_Badge](https://cranlogs.r-pkg.org/badges/grand-total/spongebob)](https://cran.r-project.org/package=spongebob) [![Build Status](https://travis-ci.org/jayqi/spongebob.svg?branch=master)](https://travis-ci.org/jayqi/spongebob) [![AppVeyor Build Status](https://ci.appveyor.com/api/projects/status/github/jayqi/spOngEbOB?branch=master&svg=true)](https://ci.appveyor.com/project/jayqi/spOngEbOB) [![codecov](https://codecov.io/gh/jayqi/spongebob/branch/master/graph/badge.svg)](https://codecov.io/gh/jayqi/spongebob)
+[![CRAN\_Status\_Badge](https://www.r-pkg.org/badges/version-last-release/spongebob)](https://cran.r-project.org/package=spongebob) 
+[![CRAN\_Download\_Badge](https://cranlogs.r-pkg.org/badges/grand-total/spongebob)](https://cran.r-project.org/package=spongebob) 
+[![Build Status](https://travis-ci.org/jayqi/spongebob.svg?branch=master)](https://travis-ci.org/jayqi/spongebob) 
+[![AppVeyor Build Status](https://ci.appveyor.com/api/projects/status/github/jayqi/spOngEbOB?branch=master&svg=true)](https://ci.appveyor.com/project/jayqi/spOngEbOB) 
+[![codecov](https://codecov.io/gh/jayqi/spongebob/branch/master/graph/badge.svg)](https://codecov.io/gh/jayqi/spongebob) 
+[![Lifecycle: Maturing](https://www.tidyverse.org/lifecycle/#maturing)](https://img.shields.io/badge/lifecycle-maturing-blue.svg)
 
 This R package's core is the function `tospongebob` that will convert text in R objects to [Mocking SpongeBob case](https://knowyourmeme.com/memes/mocking-spongebob). Additional features leverage it for even more fun. 
 
