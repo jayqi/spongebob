@@ -3,7 +3,8 @@ Type: Package
 Title: SpongeBob-Case Converter : spOngEboB-CASe CoNVertER
 Version: 0.4.0
 Authors@R: c(
-    person("Jay", "Qi", email = "jayqi.opensource@gmail.com", role = c("aut", "cre"))
+    person("Jay", "Qi", email = "jayqi.opensource@gmail.com", role = c("aut", "cre")),
+    person("Will", "Dearden", email = "wdearden208@gmail.com", role = c("ctb"))
     )
 Maintainer: Jay Qi <jayqi.opensource@gmail.com>
 Description: Convert text (and text in R objects) to Mocking SpongeBob case 
