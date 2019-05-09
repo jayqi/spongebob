@@ -38,6 +38,14 @@
     return(words[which.max(nchar(words))])
 }
 
+# Takes a vector of characters and pads them with spaces to the same length
+.pad_strings_to_fixed_length <- function(txt, lineLength) {
+    stopifnot(lineLength >= max(nchar(txt), 0))
+
+    out <- format(txt, width = lineLength)
+    return(out)
+}
+
 # Generator function for SpongeBob ASCII speech functions
 # Takes character strings defining symbols that will be the left boundary,
 # right boundary, and tail of the speech bubble
@@ -102,7 +110,7 @@
         maxLength <- max(nchar(txt), 0) # need to account for character(0)
 
         # Add the speech bubble left-right boundaries
-        txt <- sprintf(sprintf("%%-%ds", maxLength), txt)
+        txt <- .pad_strings_to_fixed_length(txt, maxLength)
         txt <- paste(left, txt, right)
 
         # Add the speech bubble top-bottom boundaries and combine

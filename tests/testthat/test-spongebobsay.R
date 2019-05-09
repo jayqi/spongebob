@@ -147,3 +147,20 @@ test_that(".longest_word errors for non-character inputs", {
         , regexp = msg
     )
 })
+
+test_that(".pad_strings_to_fixed_length errors if length is shorter than max length", {
+    msg <- "lineLength >= max(nchar(txt), 0) is not TRUE"
+    txt <- c('aa', 'b')
+    expect_error(
+        spongebob:::.pad_strings_to_fixed_length(txt, lineLength = 1)
+        , regexp = msg
+        , fixed = TRUE
+    )
+})
+
+test_that(".pad_strings_to_fixed_length works with non-Unicode characters", {
+    expect_equal(
+        spongebob:::.pad_strings_to_fixed_length(c("pokémon", "pokemon."), lineLength = 8)
+        , c("pokémon ", "pokemon.")
+    )
+})
