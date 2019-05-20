@@ -90,6 +90,8 @@ tospongebob <- function(x, ...) {
 #' @param ... onlY hERe tO sATisFy R CMd CHeCk.
 #' @param convert.names logical, indicating whether or not to convert the names
 #' of the object
+#' @param convert.by.group logical, indicating whether or not identical strings
+#' are converted to the same thing
 #' @return the input vector with its text converted to Mocking SpongeBob case.
 #' tHe inPuT VecTor WItH its TeXt ConvErTed To MOckInG SPoNGebOB cASe.
 #' @examples
@@ -100,7 +102,7 @@ tospongebob <- function(x, ...) {
 #' ))
 #' @seealso \code{\link{tospongebob}}
 #' @export
-tospongebob.character <- function(x, ..., convert.names = TRUE) {
+tospongebob.character <- function(x, ..., convert.names = TRUE, convert.by.group = FALSE) {
 
     # Input validation
     if (!is.character(x)) {
@@ -111,12 +113,14 @@ tospongebob.character <- function(x, ..., convert.names = TRUE) {
     # Hold onto names for later. Convert if specified.
     x_names <- names(x)
     if (convert.names & !is.null(x_names)) {
-        x_names <- tospongebob(x_names)
+        x_names <- tospongebob(x_names, convert.by.group = convert.by.group)
     }
-
+    
+    # Get unique strings if converting by group
+    strings_to_convert <- if (convert.by.group) unique(x) else x
 
     # Vectorized apply to transform each character string
-    x <- vapply(x
+    converted_strings <- vapply(strings_to_convert
 
         # For one character string
         , FUN = function(s) {
@@ -171,13 +175,20 @@ tospongebob.character <- function(x, ..., convert.names = TRUE) {
         , FUN.VALUE = character(1)
         , USE.NAMES = FALSE
     )
-
-    # Assign converted names if any
-    if (!is.null(x_names)) {
-        names(x) <- x_names
+    
+    # Recode original characters if converting by group
+    if (convert.by.group) {
+        #Using a named vector is effectively doing a dictionary replace.
+        names(converted_strings) <- strings_to_convert
+        converted_strings <- converted_strings[x]
     }
 
-    return(x)
+    # Assign converted names if any
+    if (!is.null(x_names) || convert.by.group) {
+        names(converted_strings) <- x_names
+    }
+
+    return(converted_strings)
 }
 
 
@@ -194,6 +205,8 @@ tospongebob.character <- function(x, ..., convert.names = TRUE) {
 #' @param ... onlY hERe tO sATisFy R CMd CHeCk.
 #' @param convert.names logical, indicating whether or not to convert the names
 #' of the object
+#' @param convert.by.group logical, indicating whether or not identical strings
+#' are converted to the same thing
 #' @return object with its text converted to Mocking SpongeBob case. ObjECt WiTH
 #' iTS tEXt CONvErTeD TO mOCkinG SponGEBob CasE.
 #' @examples
@@ -210,7 +223,7 @@ tospongebob.character <- function(x, ..., convert.names = TRUE) {
 #' spongebob:::tospongebob.default(nicktoons)
 #' @seealso \code{\link{tospongebob}}
 #' @export
-tospongebob.default <- function(x, ..., convert.names = TRUE) {
+tospongebob.default <- function(x, ..., convert.names = TRUE, convert.by.group = FALSE) {
     # If NULL value, nothing to convert
     if (is.null(x)) {
         return(x)
@@ -218,7 +231,7 @@ tospongebob.default <- function(x, ..., convert.names = TRUE) {
 
     # Attempt to convert names of object
     if (convert.names) {
-        names(x) <- tospongebob(names(x))
+        names(x) <- tospongebob(names(x), convert.by.group = convert.by.group)
     }
 
     # Iterate through object's elements and attempt to convert recursively
@@ -228,7 +241,7 @@ tospongebob.default <- function(x, ..., convert.names = TRUE) {
     for (ind in seq_along(x)) {
         if (!is.numeric(x) & !is.integer(x) & !is.logical(x)
             & !is.null(x[[ind]])) {
-                x[[ind]] <- tospongebob(x[[ind]])
+                x[[ind]] <- tospongebob(x[[ind]], convert.by.group = convert.by.group)
         }
     }
     return(x)
@@ -270,6 +283,8 @@ tospongebob.array <- function(x, ...) {
 #' row names of the data.frame
 #' @param convert.colnames logical, indicating whether or not to convert the
 #' column names of the data.frame
+#' @param convert.by.group logical, indicating whether or not identical strings
+#' are converted to the same thing
 #' @return data.frame with its text converted to Mocking SpongeBob case.
 #' @examples
 #' df1 <- head(datasets::CO2)
@@ -282,14 +297,20 @@ tospongebob.array <- function(x, ...) {
 tospongebob.data.frame <- function(x
                                    , ...
                                    , convert.rownames = TRUE
-                                   , convert.colnames = TRUE) {
+                                   , convert.colnames = TRUE
+                                   , convert.by.group = FALSE
+                                   ) {
     # First convert row names
     if (convert.rownames) {
         row.names(x) <- tospongebob(row.names(x))
     }
 
     # Then use default method to convert column names and columns
-    return(tospongebob.default(x, convert.names = convert.colnames))
+    return(tospongebob.default(
+        x
+        , convert.names = convert.colnames
+        , convert.by.group = convert.by.group
+    ))
 }
 
 # == S3 method for factors ==
@@ -343,13 +364,18 @@ tospongebob.function <- function(x, ...) {
 #' @export
 tospongebob.ggplot <- function(x, ...) {
     # Convert plot labels
-    x[['labels']] <- tospongebob.default(x[['labels']], convert.names = FALSE)
+    x[['labels']] <- tospongebob.default(
+        x[['labels']]
+        , convert.names = FALSE
+        , convert.by.group = TRUE
+    )
 
     # Find character/factor variables in data and convert them
     # Don't convert row or column names because they need to be referenced
     x[['data']] <- tospongebob.data.frame(x[['data']]
                                           , convert.rownames = FALSE
                                           , convert.colnames = FALSE
+                                          , convert.by.group = TRUE
                                           )
 
     return(x)

@@ -96,5 +96,10 @@ Useful links:
 \author{
 \strong{Maintainer}: Jay Qi \email{jayqi.opensource@gmail.com}
 
+Other contributors:
+\itemize{
+  \item Will Dearden \email{wdearden208@gmail.com} [contributor]
+}
+
 }
 \keyword{internal}

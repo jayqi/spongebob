@@ -5,7 +5,7 @@
 \title{SpongeBob-Case Conversion for Data Frames}
 \usage{
 \method{tospongebob}{data.frame}(x, ..., convert.rownames = TRUE,
-  convert.colnames = TRUE)
+  convert.colnames = TRUE, convert.by.group = FALSE)
 }
 \arguments{
 \item{x}{data.frame with text to be converted to Mocking SpongeBob case.}
@@ -17,6 +17,9 @@ row names of the data.frame}
 
 \item{convert.colnames}{logical, indicating whether or not to convert the
 column names of the data.frame}
+
+\item{convert.by.group}{logical, indicating whether or not identical strings
+are converted to the same thing}
 }
 \value{
 data.frame with its text converted to Mocking SpongeBob case.
