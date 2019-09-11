@@ -18,3 +18,5 @@
 ^.travis\.yml$
 ^appveyor\.yml$
 
+# License
+LICENSE.md
