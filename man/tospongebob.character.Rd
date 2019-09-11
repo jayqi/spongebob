@@ -4,7 +4,8 @@
 \alias{tospongebob.character}
 \title{SpongeBob-Case Conversion for Character Vectors}
 \usage{
-\method{tospongebob}{character}(x, ..., convert.names = TRUE)
+\method{tospongebob}{character}(x, ..., convert.names = TRUE,
+  convert.by.group = FALSE)
 }
 \arguments{
 \item{x}{character vector with text to be converted to Mocking SpongeBob case.}
@@ -13,6 +14,9 @@
 
 \item{convert.names}{logical, indicating whether or not to convert the names
 of the object}
+
+\item{convert.by.group}{logical, indicating whether or not identical strings
+are converted to the same thing}
 }
 \value{
 the input vector with its text converted to Mocking SpongeBob case.

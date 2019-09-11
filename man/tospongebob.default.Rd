@@ -4,7 +4,8 @@
 \alias{tospongebob.default}
 \title{SpongeBob-Case Conversion for List-like Objects}
 \usage{
-\method{tospongebob}{default}(x, ..., convert.names = TRUE)
+\method{tospongebob}{default}(x, ..., convert.names = TRUE,
+  convert.by.group = FALSE)
 }
 \arguments{
 \item{x}{object with text to be converted to Mocking SpongeBob case.}
@@ -13,6 +14,9 @@
 
 \item{convert.names}{logical, indicating whether or not to convert the names
 of the object}
+
+\item{convert.by.group}{logical, indicating whether or not identical strings
+are converted to the same thing}
 }
 \value{
 object with its text converted to Mocking SpongeBob case. ObjECt WiTH

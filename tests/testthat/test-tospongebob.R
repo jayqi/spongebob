@@ -44,3 +44,11 @@ test_that("tospongebob.character errors for non-character inputs", {
         , regexp = msg
     )
 })
+
+test_that("tospongebob.character converts groups to the same thing when
+          convert.by.group is TRUE", {
+    x <- rep(letters, 3)
+    x_converted <- tospongebob(x, convert.by.group = TRUE)
+    
+    expect_equal(length(unique(x_converted)), length(letters))
+})
