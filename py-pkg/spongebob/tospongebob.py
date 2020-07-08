@@ -1,8 +1,11 @@
+from copy import copy
 from functools import singledispatch
 from math import sqrt
 from random import choices, sample
 
-from collections.abc import Iterable
+import collections.abc
+from typing import Dict, Iterable
+from types import GeneratorType
 
 # Golden ratio
 _GOLDEN_RATIO = (1 + sqrt(5)) / 2
@@ -14,19 +17,24 @@ def tospongebob(x):
     to `Mocking SpongeBob case<https://knowyourmeme.com/memes/mocking-spongebob>`_
     The core method for character vectors will return the input character vector
     with case-converted elements. For other objects, it will attempt to
-    appropriately find text and convert them.
+    appropriately find text and convert them. Note that this returns new objects
+    and should not be modifying any objects inplace.
 
     Args:
         x: input with text to convert
 
     Returns:
-        object of same type with text converted
+        new object of same type with text converted
     """
+    if hasattr(x, "__dict__"):
+        x_dict = tospongebob(x.__dict__)
+        x = copy(x)
+        x.__dict__ = x_dict
     return x
 
 
 @tospongebob.register(str)
-def tospongebob_str(x):
+def tospongebob_str(x: str) -> str:
 
     chars = [char for char in x]
 
@@ -39,8 +47,7 @@ def tospongebob_str(x):
     length_seq = []
     while sum(length_seq) < len(alpha_inds):
         next_val = choices(
-            population=(1, 2, 3),
-            weights=(0.5, 0.5 / _GOLDEN_RATIO, 0.5 / _GOLDEN_RATIO ** 2),
+            population=(1, 2, 3), weights=(0.5, 0.5 / _GOLDEN_RATIO, 0.5 / _GOLDEN_RATIO ** 2),
         )[0]
         if sum(length_seq) + next_val <= len(alpha_inds):
             length_seq.append(next_val)
@@ -50,45 +57,46 @@ def tospongebob_str(x):
     alpha_inds.append(alpha_inds[-1] + 1)  # Need this to get final interval end
     for seg_ind in range(len(length_seq)):
         start_ind = alpha_inds[sum(length_seq[0:seg_ind])]
-        end_ind = alpha_inds[sum(length_seq[0 : seg_ind + 1])]
+        end_ind = alpha_inds[sum(length_seq[0 : seg_ind + 1])]  # noqa: E203
         if lower:
-            chars[start_ind:end_ind] = list(
-                map(lambda x: x.lower(), chars[start_ind:end_ind])
-            )
+            chars[start_ind:end_ind] = list(map(lambda x: x.lower(), chars[start_ind:end_ind]))
         else:
-            chars[start_ind:end_ind] = list(
-                map(lambda x: x.upper(), chars[start_ind:end_ind])
-            )
+            chars[start_ind:end_ind] = list(map(lambda x: x.upper(), chars[start_ind:end_ind]))
 
         lower = not lower
 
     return "".join(chars)
 
 
-@tospongebob.register(Iterable)
-def tospongebob_Iterable(x):
-    return map(tospongebob, x)
-
-
-@tospongebob.register(list)
-def tospongebob_list(x):
-    return list(tospongebob_Iterable(x))
-
-
-@tospongebob.register(tuple)
-def tospongebob_tuple(x):
-    return tuple(tospongebob_Iterable(x))
-
-
-@tospongebob.register(set)
-def tospongebob_set(x):
-    return set(tospongebob_Iterable(x))
-
-
 @tospongebob.register(dict)
-def tospongebob_dict(x, convert_keys=False):
+def tospongebob_dict(x: Dict, convert_names=False) -> Dict:
     keys = x.keys()
-    if convert_keys:
-        keys = tospongebob_Iterable(keys)
-    values = tospongebob_Iterable(x.values())
+    if convert_names:
+        keys = tospongebob(k for k in keys)
+    values = tospongebob(v for v in x.values())
     return dict(zip(keys, values))
+
+
+@tospongebob.register(GeneratorType)
+def tospongebob_generator(x: Iterable):
+    return (tospongebob(item) for item in x)
+
+
+@tospongebob.register(collections.abc.Iterable)
+def tospongebob_iterable(x: Iterable) -> Iterable:
+    # Need special handling for namedtuples because they are instantiated by args or kwargs
+    if is_namedtuple_instance(x):
+        return type(x)(*(tospongebob(item) for item in x))
+    return type(x)(tospongebob(item) for item in x)
+
+
+def is_namedtuple_instance(x) -> bool:
+    # https://stackoverflow.com/a/2166841/5957621
+    t = type(x)
+    b = t.__bases__
+    if len(b) != 1 or b[0] != tuple:
+        return False
+    f = getattr(t, "_fields", None)
+    if not isinstance(f, tuple):
+        return False
+    return all(type(n) == str for n in f)

@@ -1,7 +1,10 @@
-from .tospongebob import tospongebob
 from textwrap import wrap
+from typing import Optional
 
-_DEFAULT_WIDTH = 40
+from spongebob.tospongebob import tospongebob
+
+
+DEFAULT_WIDTH = 40
 
 _SPONGEBOB_ASCII = """    *
           *
@@ -20,26 +23,35 @@ _SPONGEBOB_ASCII = """    *
 _BUBBLE_TAIL_TEMPLATE = "  {}\n   {}"
 
 
-def _get_longest_word(what):
+def get_longest_word(what):
     words = what.split()
     return max(words, key=len)
 
 
-def _make_ascii_maker(left, right, top, bottom, tail):
-    def out_func(what, print_=True, width=None):
+class WidthTooSmallError(ValueError):
+    pass
 
-        # Get string representation of spongbob-ified object
+
+def _ascii_func_factory(left, right, top, bottom, tail):
+    def ascii_func(what: str, print_: bool = True, width: Optional[int] = None):
+
+        # Get string representation of spongebob-cased object
         what = str(tospongebob(what))
 
         # Get longest word
-        longest_word = _get_longest_word(what)
+        longest_word = get_longest_word(what)
 
         if width is not None:
             # If width is specified, validate that it's long enough
-            assert width >= len(longest_word)
+            if width < len(longest_word):
+                msg = (
+                    f"Specified width {width} is less than length of "
+                    f"longest word {longest_word} ({len(longest_word)})."
+                )
+                raise WidthTooSmallError(msg)
         else:
             # Otherwise, set to max between longest word and default
-            width = max((_DEFAULT_WIDTH, len(longest_word)))
+            width = max((DEFAULT_WIDTH, len(longest_word)))
 
         # Split text up into lines by width
         txt = wrap(what, width=width)
@@ -63,13 +75,18 @@ def _make_ascii_maker(left, right, top, bottom, tail):
 
         return out
 
-    return out_func
+    return ascii_func
 
 
-spongebobsay = _make_ascii_maker(left="|", right="|", top="-", bottom="-", tail="\\\\")
+spongebobsay = _ascii_func_factory(left="|", right="|", top="-", bottom="-", tail="\\\\")
 
-spongebobthink = _make_ascii_maker(left="(", right=")", top="~", bottom="~", tail=" o")
+spongebobthink = _ascii_func_factory(left="(", right=")", top="~", bottom="~", tail=" o")
 
-spongebobwhisper = _make_ascii_maker(
-    left=":", right=":", top=".", bottom=".", tail=" ."
-)
+spongebobwhisper = _ascii_func_factory(left=":", right=":", top=".", bottom=".", tail=" .")
+
+
+def ascii_spongebob(print_: bool = True):
+    out = "     " + _SPONGEBOB_ASCII
+    if print_:
+        print(out)
+    return out

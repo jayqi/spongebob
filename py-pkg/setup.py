@@ -1,21 +1,32 @@
+from pathlib import Path
 import setuptools
 
-CURRENT_VERSION = "0.0.1"
+
+with (Path(__file__).parent / "README.md").open("r") as fp:
+    long_description = fp.read().strip()
+
+with (Path(__file__).parent / "VERSION").open("r") as fp:
+    version = fp.read().strip()
+
 
 setuptools.setup(
     name="spongebob",
-    version=CURRENT_VERSION,
     author="Jay Qi",
     author_email="jayqi.opensource@gmail.com",
-    description="SPoNgeBOb-CAse cONveRSioN iN PyTHoN",
-    # long_description=long_description,
-    # long_description_content_type="text/markdown",
-    url="https://github.com/jayqi/spongebob",
-    packages=setuptools.find_packages(),
-    # classifiers=[
-    #     "Programming Language :: Python :: 3",
-    #     "License :: OSI Approved :: MIT License",
-    #     "Operating System :: OS Independent",
-    # ],
+    description=("SPoNgeBOb-CAse cONveRSioN iN PyTHoN."),
+    classifiers=[
+        "Programming Language :: Python :: 3",
+        "License :: OSI Approved :: BSD License",
+        "Operating System :: OS Independent",
+        "Topic :: Text Processing",
+        "Topic :: Utilities",
+    ],
+    install_requires=[],
+    keywords=["mocking spongebob case", "spongebob", "spongebob case", "spongebobsay"],
+    long_description=long_description,
+    long_description_content_type="text/markdown",
+    packages=setuptools.find_packages(include=["spongebob"]),
     python_requires=">=3.6",
+    url="https://github.com/jayqi/spongebob",
+    version=version,
 )
