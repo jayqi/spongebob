@@ -41,7 +41,7 @@ jobs:
 
     - name: R CMD check
       working-directory: ./r-pkg
-      run: rcmdcheck::rcmdcheck(args = c("--no-manual", "--as-cran"), error_on = "warning")
+      run: rcmdcheck::rcmdcheck(args = c("--no-manual"), error_on = "warning")
       shell: Rscript {0}
 
     - name: Get test coverage and upload to codecov
