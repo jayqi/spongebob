@@ -1,0 +1,52 @@
+name: r-pkg-tests
+
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    paths:
+      - 'r-pkg/**'
+      - '.github/workflows/r-pkg-tests.yml'
+  schedule:
+    # Run every Sunday
+    - cron: '0 0 * * 0'
+
+jobs:
+  build:
+    name: r-pkg, ${{ matrix.os }}, R ${{ matrix.r-version }}
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: [ubuntu-latest, macos-latest, windows-latest]
+        r-version: ['release']
+        include:
+          - {os: ubuntu-latest, r-version: '3.6'}
+          #- {os: ubuntu-latest, r-version: 'devel'}
+
+    steps:
+
+    - uses: actions/checkout@v2
+
+    - name: Set up R ${{ matrix.r-version }}
+      uses: r-lib/actions/setup-r@v1
+      with:
+        r-version: ${{ matrix.r-version }}
+
+    - name: Install dependencies
+      working-directory: ./r-pkg
+      run: |
+        install.packages(c('remotes', 'rcmdcheck'))
+        remotes::install_deps(dependencies = TRUE)
+      shell: Rscript {0}
+
+    - name: R CMD check
+      working-directory: ./r-pkg
+      run: rcmdcheck::rcmdcheck(args = c("--no-manual", "--as-cran"), error_on = "warning")
+      shell: Rscript {0}
+
+    - name: Get test coverage and upload to codecov
+      working-directory: ./r-pkg
+      run: |
+        install.packages('covr')
+        covr::codecov()
+      shell: Rscript {0}

@@ -9,7 +9,7 @@ clean-build:
 	find . -name *.pyc -delete && find . -name __pycache__ -delete
 	rm -rf build
 	rm -rf dist
-	rm -rf spongebobcase.egg-info
+	rm -rf spongebobsay.egg-info
 
 clean-test:
 	rm -f .coverage
@@ -18,8 +18,8 @@ clean-test:
 	rm -rf .pytest_cache
 
 lint:
-	black --check spongebobcase tests
-	flake8 spongebobcase tests
+	black --check spongebobsay tests
+	flake8 spongebobsay tests
 
 test:
 	pytest -vv

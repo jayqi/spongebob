@@ -1,4 +1,7 @@
+-e .
+
 black
+dataclasses ; python_version < "3.7"
 flake8
 pytest
 pytest-cov
