@@ -45,6 +45,7 @@ jobs:
       shell: Rscript {0}
 
     - name: Get test coverage and upload to codecov
+      if: ${{ matrix.os == 'ubuntu-latest' && matrix.r-version == 'release' }}
       working-directory: ./r-pkg
       run: |
         install.packages('covr')
