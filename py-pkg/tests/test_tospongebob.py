@@ -4,7 +4,7 @@ import re
 from types import GeneratorType
 from typing import NamedTuple
 
-from spongebobcase.tospongebob import tospongebob
+from spongebobcase.tospongebob import tospongebob, is_namedtuple_instance
 import pytest
 
 TEST_STRING = "who lives in a pineapple under the sea? spongebob squarepants!"
@@ -52,6 +52,25 @@ def test_tospongebob_object():
     assert not converted.answer.isupper()
 
     assert converted != q_and_a
+
+
+def test_is_namedtuple_instance():
+    class QuestionAndAnswer(NamedTuple):
+        question: str
+        answer: str
+
+    q_and_a = QuestionAndAnswer(
+        question="who lives in a pineapple under the sea?", answer="spongebob squarepants!"
+    )
+    assert is_namedtuple_instance(q_and_a)
+
+    class NotNamedTuple(tuple):
+        pass
+
+    not_namedtuple = NotNamedTuple(
+        ["who lives in a pineapple under the sea?", "spongebob squarepants!"]
+    )
+    assert not is_namedtuple_instance(not_namedtuple)
 
 
 def test_tospongebob_namedtuple():
