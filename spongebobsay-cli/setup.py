@@ -9,7 +9,7 @@ with (Path(__file__).parent / "README.md").open("r") as fp:
 with (Path(__file__).parent / "requirements.txt").open("r") as fp:
     install_requires = [str(req) for req in pkg_resources.parse_requirements(fp)]
 
-with (Path(__file__).parent / "VERSION").open("r") as fp:
+with (Path(__file__).parent / "spongebobsay" / "VERSION").open("r") as fp:
     version = fp.read().strip()
 
 setuptools.setup(

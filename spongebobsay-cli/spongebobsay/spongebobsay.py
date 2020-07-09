@@ -9,7 +9,7 @@ import typer
 app = typer.Typer()
 
 
-with (Path(__file__).parents[1] / "VERSION").open("r") as fp:
+with (Path(__file__).parent / "VERSION").open("r") as fp:
     __version__ = fp.read().strip()
 
 

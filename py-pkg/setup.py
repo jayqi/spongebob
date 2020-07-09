@@ -5,7 +5,7 @@ import setuptools
 with (Path(__file__).parent / "README.md").open("r") as fp:
     long_description = fp.read().strip()
 
-with (Path(__file__).parent / "VERSION").open("r") as fp:
+with (Path(__file__).parent / "spongebobcase" / "VERSION").open("r") as fp:
     version = fp.read().strip()
 
 
