@@ -4,7 +4,7 @@ import re
 from types import GeneratorType
 from typing import NamedTuple
 
-from spongebob.tospongebob import tospongebob
+from spongebobcase.tospongebob import tospongebob
 import pytest
 
 TEST_STRING = "who lives in a pineapple under the sea? spongebob squarepants!"

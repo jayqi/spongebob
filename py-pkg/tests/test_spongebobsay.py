@@ -1,6 +1,6 @@
 import pytest
 
-from spongebob.spongebobsay import (
+from spongebobcase.spongebobsay import (
     ascii_spongebob,
     spongebobsay,
     spongebobthink,

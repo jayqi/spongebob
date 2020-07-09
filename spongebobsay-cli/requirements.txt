@@ -1,2 +1,2 @@
 typer
-spongebob-case
+spongebobcase

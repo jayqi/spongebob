@@ -6,7 +6,7 @@ import pytest
 from typer.testing import CliRunner
 
 from spongebobsay.spongebobsay import app, __version__
-from spongebob import spongebobsay, spongebobthink, spongebobwhisper, tospongebob
+from spongebobcase import spongebobsay, spongebobthink, spongebobwhisper, tospongebob
 
 RANDOM_SEED = 29_998_559_671_349
 

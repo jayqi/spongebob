@@ -10,7 +10,7 @@ with (Path(__file__).parent / "VERSION").open("r") as fp:
 
 
 setuptools.setup(
-    name="spongebob",
+    name="spongebobcase",
     author="Jay Qi",
     author_email="jayqi.opensource@gmail.com",
     description=("SPoNgeBOb-CAse cONveRSioN iN PyTHoN."),
@@ -25,7 +25,7 @@ setuptools.setup(
     keywords=["mocking spongebob case", "spongebob", "spongebob case", "spongebobsay"],
     long_description=long_description,
     long_description_content_type="text/markdown",
-    packages=setuptools.find_packages(include=["spongebob"]),
+    packages=setuptools.find_packages(include=["spongebobcase"]),
     python_requires=">=3.6",
     url="https://github.com/jayqi/spongebob",
     version=version,

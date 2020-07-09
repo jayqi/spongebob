@@ -1,7 +1,7 @@
 from textwrap import wrap
 from typing import Optional
 
-from spongebob.tospongebob import tospongebob
+from spongebobcase.tospongebob import tospongebob
 
 
 DEFAULT_WIDTH = 40

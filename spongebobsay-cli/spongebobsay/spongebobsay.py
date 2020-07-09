@@ -2,7 +2,7 @@ from pathlib import Path
 import random
 from typing import Optional
 
-from spongebob import spongebobsay, spongebobthink, spongebobwhisper, tospongebob
+from spongebobcase import spongebobsay, spongebobthink, spongebobwhisper, tospongebob
 import typer
 
 
