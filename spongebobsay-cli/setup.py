@@ -25,6 +25,7 @@ setuptools.setup(
         "Topic :: Utilities",
     ],
     entry_points={"console_scripts": ["spongebobsay=spongebobsay.spongebobsay:app"]},
+    include_package_data=True,
     install_requires=install_requires,
     keywords=["mocking spongebob case", "spongebob", "spongebob case", "spongebobsay"],
     long_description=long_description,

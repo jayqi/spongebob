@@ -21,6 +21,7 @@ setuptools.setup(
         "Topic :: Text Processing",
         "Topic :: Utilities",
     ],
+    include_package_data=True,
     install_requires=[],
     keywords=["mocking spongebob case", "spongebob", "spongebob case", "spongebobsay"],
     long_description=long_description,
