@@ -115,7 +115,7 @@ def test_tospongebob_other_types(input_type):
     assert tospongebob(x) == x
 
 
-@pytest.mark.parametrize("iterable_type", [list, tuple, set, deque])
+@pytest.mark.parametrize("iterable_type", [list, tuple, set, frozenset, deque])
 def test_tospongebob_iterables(iterable_type):
     """Test that tospongebob works with iterables.
     """
@@ -142,7 +142,11 @@ def test_tospongebob_generator():
     assert all(not x.isupper() for x in converted_list)
 
 
-@pytest.mark.parametrize("dict_type", [dict, defaultdict, OrderedDict])
+class defaultdict_subclass(defaultdict):
+    pass
+
+
+@pytest.mark.parametrize("dict_type", [dict, defaultdict, OrderedDict, defaultdict_subclass])
 def test_tospongebob_dict(dict_type):
     test_data = {
         "question": "who lives in a pineapple under the sea?",
@@ -153,6 +157,7 @@ def test_tospongebob_dict(dict_type):
 
     # Default
     converted_dict = tospongebob(dict_instance)
+    assert isinstance(converted_dict, dict_type)
     assert list(converted_dict.keys()) == list(dict_instance.keys())
     assert all(not x.islower() for x in converted_dict.values())
     assert all(not x.isupper() for x in converted_dict.values())
@@ -160,6 +165,7 @@ def test_tospongebob_dict(dict_type):
 
     # convert_names = True
     converted_dict = tospongebob(dict_instance, convert_names=True)
+    assert isinstance(converted_dict, dict_type)
     assert all(not x.islower() for x in converted_dict.keys())
     assert all(not x.isupper() for x in converted_dict.keys())
     assert all(not x.islower() for x in converted_dict.values())

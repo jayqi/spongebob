@@ -1,3 +1,4 @@
+from collections import defaultdict
 from copy import copy
 from functools import singledispatch
 from math import sqrt
@@ -15,10 +16,9 @@ _GOLDEN_RATIO = (1 + sqrt(5)) / 2
 def tospongebob(x):
     """A single-dispatch generic function for converting text in Python objects
     to `Mocking SpongeBob case<https://knowyourmeme.com/memes/mocking-spongebob>`_
-    The core method for character vectors will return the input character vector
-    with case-converted elements. For other objects, it will attempt to
-    appropriately find text and convert them. Note that this returns new objects
-    and should not be modifying any objects inplace.
+    The core method for strings will return the input string with converted to Mocking Spongebob
+    case. For other objects, it will attempt to appropriately find contained strings and convert
+    them. Note that this returns new objects and should not be modifying any objects inplace.
 
     Args:
         x: input with text to convert
@@ -59,9 +59,9 @@ def tospongebob_str(x: str) -> str:
         start_ind = alpha_inds[sum(length_seq[0:seg_ind])]
         end_ind = alpha_inds[sum(length_seq[0 : seg_ind + 1])]  # noqa: E203
         if lower:
-            chars[start_ind:end_ind] = list(map(lambda x: x.lower(), chars[start_ind:end_ind]))
+            chars[start_ind:end_ind] = [char.lower() for char in chars[start_ind:end_ind]]
         else:
-            chars[start_ind:end_ind] = list(map(lambda x: x.upper(), chars[start_ind:end_ind]))
+            chars[start_ind:end_ind] = [char.upper() for char in chars[start_ind:end_ind]]
 
         lower = not lower
 
@@ -69,16 +69,22 @@ def tospongebob_str(x: str) -> str:
 
 
 @tospongebob.register(dict)
-def tospongebob_dict(x: Dict, convert_names=False) -> Dict:
+def tospongebob_dict(x: Dict, convert_names: bool = False) -> Dict:
+    dict_type = type(x)
     keys = x.keys()
     if convert_names:
         keys = tospongebob(k for k in keys)
     values = tospongebob(v for v in x.values())
-    return dict(zip(keys, values))
+
+    # Special case for defauldict: different constructor
+    if isinstance(x, defaultdict):
+        return dict_type(x.default_factory, zip(keys, values))
+
+    return dict_type(zip(keys, values))
 
 
 @tospongebob.register(GeneratorType)
-def tospongebob_generator(x: Iterable):
+def tospongebob_generator(x: Iterable) -> Iterable:
     return (tospongebob(item) for item in x)
 
 
