@@ -73,7 +73,7 @@ Options:
                                   option.  [default: False]
 
   -s, --random-seed INTEGER       Random seed.
-  --version                       Show spongebobsay version.  [default: False]
+  --version                       Show spongebobsay version and exit.
   --install-completion [bash|zsh|fish|powershell|pwsh]
                                   Install completion for the specified shell.
   --show-completion [bash|zsh|fish|powershell|pwsh]

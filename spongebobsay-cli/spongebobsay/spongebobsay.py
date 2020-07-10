@@ -42,7 +42,8 @@ def main(
         "--version",
         callback=version_callback,
         is_eager=True,
-        help="Show spongebobsay version.",
+        help="Show spongebobsay version and exit.",
+        show_default=False,
     ),
 ):
     """Generate an ASCII picture of Spongebob saying something provided by the user, but in Mocking
