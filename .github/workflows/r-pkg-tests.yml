@@ -21,7 +21,7 @@ jobs:
         r-version: ['release']
         include:
           - {os: ubuntu-latest, r-version: '3.6'}
-          #- {os: ubuntu-latest, r-version: 'devel'}
+          - {os: macos-latest, r-version: 'devel'}
 
     steps:
 
@@ -32,11 +32,20 @@ jobs:
       with:
         r-version: ${{ matrix.r-version }}
 
-    - name: Install dependencies
+    - name: Install dependencies (standard)
+      if: ${{ matrix.r-version != 'devel' }}
       working-directory: ./r-pkg
       run: |
         install.packages(c('remotes', 'rcmdcheck'))
         remotes::install_deps(dependencies = TRUE)
+      shell: Rscript {0}
+
+    - name: Install dependencies (devel)
+      if: ${{ matrix.r-version == 'devel' }}
+      working-directory: ./r-pkg
+      run: |
+        install.packages(c('remotes', 'rcmdcheck'))
+        remotes::install_deps(dependencies = TRUE, type = 'source')
       shell: Rscript {0}
 
     - name: R CMD check
@@ -49,5 +58,5 @@ jobs:
       working-directory: ./r-pkg
       run: |
         remotes::install_cran("covr")
-        covr::codecov()
+        covr::codecov(flags = "r-pkg")
       shell: Rscript {0}
