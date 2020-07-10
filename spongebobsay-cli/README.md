@@ -1,6 +1,6 @@
 # spongebobsay: asCIi moCkIng SpoNgEbOb CommAnD-liNE ProGram
 
-Command-line program to generate an ASCII picture of Spongebob saying something provided by the user, but in Mocking Spongebob case.
+Command-line program to generate an ASCII picture of Spongebob saying something provided by the user, but in [Mocking SpongeBob case](https://knowyourmeme.com/memes/mocking-spongebob).
 
 ```
  ----------------------------------------
@@ -22,12 +22,23 @@ Command-line program to generate an ASCII picture of Spongebob saying something 
            ###   ###
 ```
 
-## Installation
+Also available as [R](https://github.com/jayqi/spongebob/tree/master/r-pkg) or [Python](https://github.com/jayqi/spongebob/tree/master/py-pkg) libaries.
 
-This package is currently only on GitHub. Clone this repo, enter the directory, and run.
+
+## Installation. inSTAllATIoN.
+
+You can get the LateST StABle VeRsIon of `spongebobsay` from PyPI. For managing Python command-line tools, I recommend [`pipx`](https://github.com/pipxproject/pipx):
 
 ```bash
-pip install .
+# Sorry not yet!
+```
+
+### Development Version. dEveLoPmEnT VerSIOn.
+
+To install the dEveLoPmEnT VerSIOn of this program, get it DirEcTlY fROm gItHuB:
+
+```bash
+pipx install -e git+https://github.com/jayqi/spongebob.git#egg=version_subpkg&subdirectory=py-pkg
 ```
 
 ## Usage
@@ -36,7 +47,7 @@ pip install .
 spongebobsay "Who lives in a pineapple under the sea?"
 ```
 
-### Documentation
+## Documentation
 
 ```
 Usage: spongebobsay [OPTIONS] WHAT
@@ -71,3 +82,9 @@ Options:
 
   --help                          Show this message and exit.
 ```
+
+insPIreD bY A [twiTTeR CoNVErsaTIon StArtED By @jONgAllOwaY](https://twitter.com/jongalloway/status/1075889210714816512) AnD THe fAMOuS [cOWsAY](https://en.wikipedia.org/wiki/Cowsay) pROGraM.
+
+---
+
+<sup>The author of this package claims no ownership over SpongeBob SquarePants. SpongeBob SquarePants is the creation of Stephen Hillenburg, and its trademark is owned by Viacom International Inc. This package uses SpongeBob under fair use, and this package should only be used for personal, noncommercial purposes.</sup>
