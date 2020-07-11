@@ -4,6 +4,7 @@ black
 dataclasses ; python_version < "3.7"
 flake8
 mkdocs
-mkdocs-bootswatch
+mkdocs-material
+mkdocstrings
 pytest
 pytest-cov
