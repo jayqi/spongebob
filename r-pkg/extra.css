@@ -1,0 +1,10 @@
+
+/* Spacing for describe block labels */
+.dl-horizontal dt {
+  white-space: normal;
+  width: 33%;
+}
+
+.dl-horizontal dd {
+  margin-left: 35%;
+}
