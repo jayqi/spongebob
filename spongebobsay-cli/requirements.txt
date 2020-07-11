@@ -1,2 +1,2 @@
-typer
+typer>=0.3.0
 spongebobcase
