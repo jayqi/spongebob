@@ -25,7 +25,8 @@ jobs:
       working-directory: ./spongebobsay-cli
       run: |
         python -m pip install --upgrade pip
-        pip install -r dev-requirements.txt
+        pip install ../py-pkg
+        pip install -r requirements-dev.txt
 
     - name: Build package
       id: build_package
@@ -37,8 +38,8 @@ jobs:
 
     - name: Publish to Test PyPI
       uses: pypa/gh-action-pypi-publish@v1.3.0
-      working-directory: ./spongebobsay-cli
       with:
+        packages_dir: spongebobsay-cli/dist/
         user: __token__
         password: ${{ secrets.PYPI_TEST_TOKEN }}
         repository_url: https://test.pypi.org/legacy/
@@ -51,10 +52,9 @@ jobs:
 
     - name: Publish docs
       uses: JamesIves/github-pages-deploy-action@releases/v3
-      working-directory: ./spongebobsay-cli
       with:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        FOLDER: docs/site
+        FOLDER: spongebobsay-cli/docs/site
         BRANCH: gh-pages
         TARGET_FOLDER: spongebobsay-cli/
 
@@ -66,8 +66,7 @@ jobs:
     #     skip_existing: false
 
     - name: Persist build artifacts
-      working-directory: ./spongebobsay-cli
       uses: actions/upload-artifact@v1
       with:
         name: spongebobsay-cli-dist
-        path: dist/
+        path: spongebobsay-cli/dist/
