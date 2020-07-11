@@ -1,4 +1,4 @@
-# spongebobsay: asCIi moCkIng SpoNgEbOb CommAnD-liNE ProGram
+# spongebobsay: AScIi MOcKiNg sPONgEbOB comMAnD-lIne ProGrAm
 
 Command-line program to generate an ASCII picture of SpongeBob saying something provided by the user, but in [Mocking SpongeBob case](https://knowyourmeme.com/memes/mocking-spongebob).
 
