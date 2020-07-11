@@ -2,7 +2,7 @@ name: release-spongebobsay-cli
 
 on:
   push:
-    branches: [ py-package ]
+    branches: [ master ]
     paths:
       - spongebobsay-cli/spongebobsay/VERSION
 
@@ -58,12 +58,13 @@ jobs:
         BRANCH: gh-pages
         TARGET_FOLDER: spongebobsay-cli/
 
-    # - name: Publish to Production PyPI
-    #   uses: pypa/gh-action-pypi-publish@v1.3.0
-    #   with:
-    #     user: __token__
-    #     password: ${{ secrets.PYPI_PROD_TOKEN }}
-    #     skip_existing: false
+    - name: Publish to Production PyPI
+      uses: pypa/gh-action-pypi-publish@v1.3.0
+      with:
+        packages_dir: spongebobsay-cli/dist/
+        user: __token__
+        password: ${{ secrets.PYPI_PROD_TOKEN }}
+        skip_existing: false
 
     - name: Persist build artifacts
       uses: actions/upload-artifact@v1

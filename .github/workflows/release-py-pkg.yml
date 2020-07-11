@@ -2,7 +2,7 @@ name: release-py-pkg
 
 on:
   push:
-    branches: [ py-package ]
+    branches: [ master ]
     paths:
       - py-pkg/spongebobcase/VERSION
 
@@ -57,12 +57,13 @@ jobs:
         BRANCH: gh-pages
         TARGET_FOLDER: py-pkg/
 
-    # - name: Publish to Production PyPI
-    #   uses: pypa/gh-action-pypi-publish@v1.3.0
-    #   with:
-    #     user: __token__
-    #     password: ${{ secrets.PYPI_PROD_TOKEN }}
-    #     skip_existing: false
+    - name: Publish to Production PyPI
+      uses: pypa/gh-action-pypi-publish@v1.3.0
+      with:
+        packages_dir: py-pkg/dist/
+        user: __token__
+        password: ${{ secrets.PYPI_PROD_TOKEN }}
+        skip_existing: false
 
     - name: Persist build artifacts
       uses: actions/upload-artifact@v1
