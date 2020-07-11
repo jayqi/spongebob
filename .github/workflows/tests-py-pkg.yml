@@ -1,4 +1,4 @@
-name: py-pkg-tests
+name: tests-py-pkg
 
 on:
   push:

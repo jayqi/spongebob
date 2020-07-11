@@ -1,4 +1,4 @@
-name: r-pkg-tests
+name: tests-r-pkg
 
 on:
   push:

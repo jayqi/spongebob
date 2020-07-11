@@ -1,4 +1,4 @@
-name: spongebobsay-cli-tests
+name: tests-spongebobsay-cli
 
 on:
   push:
