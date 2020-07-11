@@ -1,0 +1,74 @@
+name: tests-r-pkg
+
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    paths:
+      - 'r-pkg/**'
+      - '.github/workflows/r-pkg-tests.yml'
+  schedule:
+    # Run every Sunday
+    - cron: '0 0 * * 0'
+
+jobs:
+  build:
+    name: r-pkg, ${{ matrix.os }}, R ${{ matrix.r-version }}
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: [ubuntu-latest, macos-latest, windows-latest]
+        r-version: ['release']
+        include:
+          - {os: ubuntu-latest, r-version: '3.6'}
+          - {os: macos-latest, r-version: 'devel'}
+
+    steps:
+
+    - uses: actions/checkout@v2
+
+    - name: Set up R ${{ matrix.r-version }}
+      uses: r-lib/actions/setup-r@v1
+      with:
+        r-version: ${{ matrix.r-version }}
+
+    - name: Install dependencies (standard)
+      if: ${{ matrix.r-version != 'devel' }}
+      working-directory: ./r-pkg
+      shell: Rscript {0}
+      run: |
+        install.packages(c('remotes', 'rcmdcheck'))
+        remotes::install_deps(dependencies = TRUE)
+
+    - name: Install dependencies (devel)
+      if: ${{ matrix.r-version == 'devel' }}
+      working-directory: ./r-pkg
+      shell: Rscript {0}
+      run: |
+        install.packages(c('remotes', 'rcmdcheck'))
+        remotes::install_deps(dependencies = TRUE, type = 'source')
+
+    - name: R CMD check
+      working-directory: ./r-pkg
+      shell: Rscript {0}
+      run: rcmdcheck::rcmdcheck(args = c("--no-manual"), error_on = "warning")
+
+
+    - uses: r-lib/actions/setup-pandoc@v1
+      if: ${{ matrix.os == 'macos-latest' && matrix.r-version == 'release' }}
+
+    - name: Test building pkgdown site
+      if: ${{ matrix.os == 'macos-latest' && matrix.r-version == 'release' }}
+      working-directory: ./r-pkg
+      shell: Rscript {0}
+      run: |
+        remotes::install_cran("pkgdown")
+        pkgdown::build_site()
+
+    - name: Get test coverage and upload to codecov
+      if: ${{ matrix.os == 'macos-latest' && matrix.r-version == 'release' }}
+      working-directory: ./r-pkg
+      shell: Rscript {0}
+      run: |
+        remotes::install_cran("covr")
+        covr::codecov(flags = "r-pkg")

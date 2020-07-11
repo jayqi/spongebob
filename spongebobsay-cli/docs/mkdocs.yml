@@ -1,0 +1,16 @@
+site_name: spongebobsay
+site_url: https://jayqi.github.io/spongebob/spongebobsay-cli/
+repo_url: https://github.com/jayqi/spongebob/tree/master/spongebobsay-cli/
+
+nav:
+  - Home: 'index.md'
+
+
+theme:
+  name: material
+  # highlightjs: true
+  # hljs_languages:
+  #     python
+
+plugins:
+  - search

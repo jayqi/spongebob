@@ -1,0 +1,73 @@
+name: release-spongebobsay-cli
+
+on:
+  push:
+    branches: [ master ]
+    paths:
+      - spongebobsay-cli/spongebobsay/VERSION
+
+jobs:
+  build:
+    name: Build and publish new release
+    runs-on: "ubuntu-latest"
+    if: github.repository == 'jayqi/spongebob'
+
+    steps:
+
+    - uses: actions/checkout@v2
+
+    - name: Set up Python ${{ matrix.python-version }}
+      uses: actions/setup-python@v2
+      with:
+        python-version: 3.7
+
+    - name: Install dependencies
+      working-directory: ./spongebobsay-cli
+      run: |
+        python -m pip install --upgrade pip
+        pip install ../py-pkg
+        pip install -r requirements-dev.txt
+
+    - name: Build package
+      id: build_package
+      working-directory: ./spongebobsay-cli
+      run: |
+        cat spongebobsay/VERSION
+        echo "::set-output name=version::$(cat VERSION)"
+        make build
+
+    - name: Publish to Test PyPI
+      uses: pypa/gh-action-pypi-publish@v1.3.0
+      with:
+        packages_dir: spongebobsay-cli/dist/
+        user: __token__
+        password: ${{ secrets.PYPI_TEST_TOKEN }}
+        repository_url: https://test.pypi.org/legacy/
+        skip_existing: true
+
+    - name: Build docs
+      working-directory: ./spongebobsay-cli
+      run: |
+        make docs
+
+    - name: Publish docs
+      uses: JamesIves/github-pages-deploy-action@releases/v3
+      with:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        FOLDER: spongebobsay-cli/docs/site
+        BRANCH: gh-pages
+        TARGET_FOLDER: spongebobsay-cli/
+
+    - name: Publish to Production PyPI
+      uses: pypa/gh-action-pypi-publish@v1.3.0
+      with:
+        packages_dir: spongebobsay-cli/dist/
+        user: __token__
+        password: ${{ secrets.PYPI_PROD_TOKEN }}
+        skip_existing: false
+
+    - name: Persist build artifacts
+      uses: actions/upload-artifact@v1
+      with:
+        name: spongebobsay-cli-dist
+        path: spongebobsay-cli/dist/

@@ -1,0 +1,9 @@
+template:
+    params:
+        bootswatch: yeti
+
+navbar:
+    type: inverse
+
+development:
+    mode: auto

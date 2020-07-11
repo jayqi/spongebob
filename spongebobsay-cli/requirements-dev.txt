@@ -1,0 +1,11 @@
+-c requirements.txt
+-r requirements.txt
+
+-e .
+
+black
+flake8
+mkdocs
+mkdocs-material
+pytest
+pytest-cov

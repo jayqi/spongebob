@@ -1,0 +1,20 @@
+site_name: spongebobcase
+site_url: https://jayqi.github.io/spongebob/py-pkg/
+repo_url: https://github.com/jayqi/spongebob/
+
+nav:
+  - Home: 'index.md'
+  - API Reference:
+    - 'spongebobcase.spongebobsay' : 'api-reference/spongebobsay.md'
+    - 'spongebobcase.tospongebob' : 'api-reference/tospongebob.md'
+
+
+theme:
+  name: material
+  # highlightjs: true
+  # hljs_languages:
+  #     python
+
+plugins:
+  - search
+  - mkdocstrings
