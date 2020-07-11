@@ -148,6 +148,18 @@ def test_tospongebob_iterables(iterable_type):
     assert converted != iterable_instance
 
 
+def test_tospongebob_iterables_convert_by_group():
+    # Not convert_by_group
+    test_data = ["spongebob"] * 10
+    converted = tospongebob(test_data)
+    assert len(set(converted)) > 1
+
+    # With convert_by_group
+    test_data = ["spongebob"] * 10
+    converted = tospongebob(test_data, convert_by_group=True)
+    assert len(set(converted)) == 1
+
+
 def test_tospongebob_generator():
     """Test that tospongebob works with generators.
     """
@@ -159,6 +171,18 @@ def test_tospongebob_generator():
     assert all(isinstance(x, str) for x in converted_list)
     assert all(not x.islower() for x in converted_list)
     assert all(not x.isupper() for x in converted_list)
+
+
+def test_tospongebob_generator_convert_by_group():
+    # Not convert_by_group
+    test_data = ["spongebob"] * 10
+    converted = tospongebob(x for x in test_data)
+    assert len(set(converted)) > 1
+
+    # With convert_by_group
+    test_data = ["spongebob"] * 10
+    converted = tospongebob((x for x in test_data), convert_by_group=True)
+    assert len(set(converted)) == 1
 
 
 class defaultdict_subclass(defaultdict):
