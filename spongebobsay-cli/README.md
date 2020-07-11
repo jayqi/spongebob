@@ -2,15 +2,14 @@
 
 [![tests-spongebobsay-cli](https://github.com/jayqi/spongebob/workflows/tests-spongebobsay-cli/badge.svg?branch=master)](https://github.com/jayqi/spongebob/actions?query=workflow%3Atests-spongebobsay-cli+branch%3Amaster) [![PyPI](https://img.shields.io/pypi/v/spongebobsay.svg)](https://pypi.org/project/spongebobsay/)
 
-Command-line program to generate an ASCII picture of SpongeBob saying something provided by the user, but in [Mocking SpongeBob case](https://knowyourmeme.com/memes/mocking-spongebob).
+Command-line program for generating an ASCII picture of SpongeBob saying a message, but in [Mocking SpongeBob case](https://knowyourmeme.com/memes/mocking-spongebob).
 
 ```
- ----------------------------------------
-| ComManD-Line PROgRAm to GEnerATE aN    |
-| asCIi PictUre OF spOnGeBOb SaYiNg      |
-| SOMetHInG ProVidED by The uSeR, buT In |
-| MockING spONGeBoB cASE.                |
- ----------------------------------------
+ -----------------------------------------
+| COmmAnd-lINE prOgraM FOr GEnErATiNg an  |
+| AScIi pIcTUrE OF sPonGEBoB sAyIng A     |
+| mEssaGe, BuT IN mOCKinG SponGeboB CasE. |
+ -----------------------------------------
   \\
    \\    *
           *
@@ -24,7 +23,7 @@ Command-line program to generate an ASCII picture of SpongeBob saying something 
            ###   ###
 ```
 
-Also available as a [Python library](https://github.com/jayqi/spongebob/tree/master/py-pkg) or [R library](https://github.com/jayqi/spongebob/tree/master/r-pkg).
+Also available as a [Python library (`spongebobcase`)](https://github.com/jayqi/spongebob/tree/master/py-pkg) or [R library (`spongebob`)](https://github.com/jayqi/spongebob/tree/master/r-pkg). This CLI wraps the `spongebobcase` Python library.
 
 
 ## Installation. inSTAllATIoN.
@@ -35,7 +34,7 @@ You can get the LateST StABle VeRsIon of `spongebobsay` from PyPI.
 pip install spongebobsay
 ```
 
-For managing Python command-line tools, I recommend checking out [`pipx`](https://github.com/pipxproject/pipx):
+For managing pyTHon cOMmanD-lINE tOOls, I recommend checking out [`pipx`](https://github.com/pipxproject/pipx):
 
 ```bash
 pipx install spongebobsay

@@ -16,7 +16,7 @@ setuptools.setup(
     name="spongebobsay",
     author="Jay Qi",
     author_email="jayqi.opensource@gmail.com",
-    description="asCIi moCkIng SpoNgEbOb CommAnD-liNE ProGram",
+    description="AScIi MOcKiNg sPONgEbOB comMAnD-lIne ProGrAm",
     classifiers=[
         "Programming Language :: Python :: 3",
         "License :: OSI Approved :: BSD License",
