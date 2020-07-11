@@ -4,3 +4,6 @@ template:
 
 navbar:
     type: inverse
+
+development:
+    mode: auto

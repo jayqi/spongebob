@@ -35,28 +35,34 @@ jobs:
     - name: Install dependencies (standard)
       if: ${{ matrix.r-version != 'devel' }}
       working-directory: ./r-pkg
+      shell: Rscript {0}
       run: |
         install.packages(c('remotes', 'rcmdcheck'))
         remotes::install_deps(dependencies = TRUE)
-      shell: Rscript {0}
 
     - name: Install dependencies (devel)
       if: ${{ matrix.r-version == 'devel' }}
       working-directory: ./r-pkg
+      shell: Rscript {0}
       run: |
         install.packages(c('remotes', 'rcmdcheck'))
         remotes::install_deps(dependencies = TRUE, type = 'source')
-      shell: Rscript {0}
 
     - name: R CMD check
       working-directory: ./r-pkg
-      run: rcmdcheck::rcmdcheck(args = c("--no-manual"), error_on = "warning")
       shell: Rscript {0}
+      run: rcmdcheck::rcmdcheck(args = c("--no-manual"), error_on = "warning")
+
+    - name: Build pkgdown site
+      working-directory: ./r-pkg
+      shell: Rscript {0}
+      run: |
+        pkgdown::build_site()
 
     - name: Get test coverage and upload to codecov
       if: ${{ matrix.os == 'macos-latest' && matrix.r-version == 'release' }}
       working-directory: ./r-pkg
+      shell: Rscript {0}
       run: |
         remotes::install_cran("covr")
         covr::codecov(flags = "r-pkg")
-      shell: Rscript {0}
