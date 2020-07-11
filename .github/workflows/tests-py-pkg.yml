@@ -6,7 +6,7 @@ on:
   pull_request:
     paths:
         - 'py-pkg/**'
-        - '.github/workflows/py-pkg-tests.yml'
+        - '.github/workflows/tests-py-pkg.yml'
   schedule:
     # Run every Sunday
     - cron: '0 0 * * 0'

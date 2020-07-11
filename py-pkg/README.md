@@ -1,6 +1,6 @@
 # spongebobcase: SPoNgeBOb-CAse cONveRSioN iN PyTHoN
 
-[![py-pkg-tests](https://github.com/jayqi/spongebob/workflows/py-pkg-tests/badge.svg?branch=master)](https://github.com/jayqi/spongebob/actions?query=workflow%3Apy-pkg-tests+branch%3Amaster)
+[![tests-py-pkg](https://github.com/jayqi/spongebob/workflows/tests-py-pkg/badge.svg?branch=master)](https://github.com/jayqi/spongebob/actions?query=workflow%3Atests-py-pkg+branch%3Amaster)
 
 A Python library to convert text (and text in objects) to [Mocking SpongeBob case](https://knowyourmeme.com/memes/mocking-spongebob) and show it off in fun ways.
 

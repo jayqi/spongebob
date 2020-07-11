@@ -1,5 +1,7 @@
 # spongebobsay: AScIi MOcKiNg sPONgEbOB comMAnD-lIne ProGrAm
 
+[![tests-spongebobsay-cli](https://github.com/jayqi/spongebob/workflows/tests-spongebobsay-cli/badge.svg?branch=master)](https://github.com/jayqi/spongebob/actions?query=workflow%3Atests-spongebobsay-cli+branch%3Amaster)
+
 Command-line program to generate an ASCII picture of SpongeBob saying something provided by the user, but in [Mocking SpongeBob case](https://knowyourmeme.com/memes/mocking-spongebob).
 
 ```

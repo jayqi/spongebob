@@ -7,7 +7,7 @@ on:
     paths:
         - 'py-pkg/**'
         - 'spongebobsay-cli/**'
-        - '.github/workflows/spongebobsay-cli-tests.yml'
+        - '.github/workflows/tests-spongebobsay-cli.yml'
   schedule:
     # Run every Sunday
     - cron: '0 0 * * 0'
