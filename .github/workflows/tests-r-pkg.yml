@@ -53,10 +53,16 @@ jobs:
       shell: Rscript {0}
       run: rcmdcheck::rcmdcheck(args = c("--no-manual"), error_on = "warning")
 
-    - name: Build pkgdown site
+
+    - uses: r-lib/actions/setup-pandoc@v1
+      if: ${{ matrix.os == 'macos-latest' && matrix.r-version == 'release' }}
+
+    - name: Test building pkgdown site
+      if: ${{ matrix.os == 'macos-latest' && matrix.r-version == 'release' }}
       working-directory: ./r-pkg
       shell: Rscript {0}
       run: |
+        remotes::install_cran("pkgdown")
         pkgdown::build_site()
 
     - name: Get test coverage and upload to codecov
