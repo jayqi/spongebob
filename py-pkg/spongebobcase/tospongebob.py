@@ -73,12 +73,12 @@ def tospongebob_str(x: str) -> str:
 
 
 @tospongebob.register(dict)
-def tospongebob_dict(x: Dict, convert_names: bool = False) -> Dict:
+def tospongebob_dict(x: Dict, convert_names: bool = False, convert_by_group: bool = False) -> Dict:
     dict_type = type(x)
     keys = x.keys()
     if convert_names:
         keys = tospongebob(k for k in keys)
-    values = tospongebob(v for v in x.values())
+    values = tospongebob((v for v in x.values()), convert_by_group=convert_by_group)
 
     # Special case for defauldict: different constructor
     if isinstance(x, defaultdict):
@@ -88,16 +88,27 @@ def tospongebob_dict(x: Dict, convert_names: bool = False) -> Dict:
 
 
 @tospongebob.register(GeneratorType)
-def tospongebob_generator(x: Iterable) -> Iterable:
-    return (tospongebob(item) for item in x)
+def tospongebob_generator(x: Iterable, convert_by_group: bool = False) -> Iterable:
+    if convert_by_group:
+        # Need to save generator contents so we can use it multiple times
+        x = list(x)
+    gen = (tospongebob(item) for item in x)
+    if convert_by_group:
+        lookup = dict(zip(x, gen))
+        gen = (lookup[item] for item in x)
+    return gen
 
 
 @tospongebob.register(collections.abc.Iterable)
-def tospongebob_iterable(x: Iterable) -> Iterable:
-    # Need special handling for namedtuples because they are instantiated by args or kwargs
+def tospongebob_iterable(x: Iterable, convert_by_group: bool = False) -> Iterable:
+    gen = (tospongebob(item) for item in x)
+    if convert_by_group:
+        lookup = dict(zip(x, gen))
+        gen = (lookup[item] for item in x)
     if is_namedtuple_instance(x):
-        return type(x)(*(tospongebob(item) for item in x))
-    return type(x)(tospongebob(item) for item in x)
+        # Need special handling for namedtuples because they are instantiated by args or kwargs
+        return type(x)(*gen)
+    return type(x)(gen)
 
 
 def is_namedtuple_instance(x) -> bool:
