@@ -4,7 +4,7 @@
 
 A Python library to convert text (and text in objects) to [Mocking SpongeBob case](https://knowyourmeme.com/memes/mocking-spongebob) and show it off in fun ways.
 
-Also available [as an R library](https://github.com/jayqi/spongebob/tree/master/r-pkg) or [as a CLI](https://github.com/jayqi/spongebob/tree/master/spongebobsay-cli).
+Also available [as an R library (`spongebob`)](https://github.com/jayqi/spongebob/tree/master/r-pkg) or [as a CLI (`spongebobsay`)](https://github.com/jayqi/spongebob/tree/master/spongebobsay-cli).
 
 ## Installation. inSTAllATIoN.
 
