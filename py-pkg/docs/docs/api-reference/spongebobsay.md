@@ -1,0 +1,3 @@
+# `spongebobcase.spongebobsay`
+
+::: spongebobcase.spongebobsay

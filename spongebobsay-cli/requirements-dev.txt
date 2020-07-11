@@ -5,5 +5,7 @@
 
 black
 flake8
+mkdocs
+mkdocs-material
 pytest
 pytest-cov

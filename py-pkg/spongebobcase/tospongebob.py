@@ -5,17 +5,21 @@ from math import sqrt
 from random import choices, sample
 
 import collections.abc
-from typing import Dict, Iterable
+from typing import Dict, Iterable, TypeVar
 from types import GeneratorType
+
 
 # Golden ratio
 _GOLDEN_RATIO = (1 + sqrt(5)) / 2
 
 
+T = TypeVar("T")
+
+
 @singledispatch
-def tospongebob(x):
+def tospongebob(x: T) -> T:
     """A single-dispatch generic function for converting text in Python objects
-    to `Mocking SpongeBob case<https://knowyourmeme.com/memes/mocking-spongebob>`_
+    to [Mocking SpongeBob case](https://knowyourmeme.com/memes/mocking-spongebob).
     The core method for strings will return the input string with converted to Mocking Spongebob
     case. For other objects, it will attempt to appropriately find contained strings and convert
     them. Note that this returns new objects and should not be modifying any objects inplace.

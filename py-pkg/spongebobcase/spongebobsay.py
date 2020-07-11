@@ -1,5 +1,5 @@
 from textwrap import wrap
-from typing import Optional
+from typing import Any, Optional
 
 from spongebobcase.tospongebob import tospongebob
 
@@ -32,8 +32,24 @@ class WidthTooSmallError(ValueError):
     pass
 
 
-def _ascii_func_factory(left, right, top, bottom, tail):
-    def ascii_func(what: str, print_: bool = True, width: Optional[int] = None):
+def _ascii_func_factory(left: str, right: str, top: str, bottom: str, tail: str, style: str):
+    def ascii_func(what: Any, print_: bool = True, width: Optional[int] = None) -> str:
+        """Creates an ASCII Mocking SpongeBob with a message in a {style} bubble. The message is
+        the string representation of the given input having been converted using
+        [tospongebob][spongebobcase.tospongebob].
+
+        Args:
+            what (Any): object to display as message
+            print_ (bool, optional): whether to print to console using `print`. Defaults to True.
+            width (Optional[int], optional): Width of message bubble in characters. If None, will
+                use {default_width} or longest word, whichever is longer. Defaults to None.
+
+        Raises:
+            WidthTooSmallError: If specified width is less than character length of longest word.
+
+        Returns:
+            multiline string with ASCII rendering
+        """
 
         # Get string representation of spongebob-cased object
         what = str(tospongebob(what))
@@ -75,17 +91,33 @@ def _ascii_func_factory(left, right, top, bottom, tail):
 
         return out
 
+    ascii_func.__doc__ = ascii_func.__doc__.format(style=style, default_width=DEFAULT_WIDTH)
+
     return ascii_func
 
 
-spongebobsay = _ascii_func_factory(left="|", right="|", top="-", bottom="-", tail="\\\\")
+spongebobsay = _ascii_func_factory(
+    left="|", right="|", top="-", bottom="-", tail="\\\\", style="speech"
+)
 
-spongebobthink = _ascii_func_factory(left="(", right=")", top="~", bottom="~", tail=" o")
+spongebobthink = _ascii_func_factory(
+    left="(", right=")", top="~", bottom="~", tail=" o", style="thought"
+)
 
-spongebobwhisper = _ascii_func_factory(left=":", right=":", top=".", bottom=".", tail=" .")
+spongebobwhisper = _ascii_func_factory(
+    left=":", right=":", top=".", bottom=".", tail=" .", style="whisper"
+)
 
 
-def ascii_spongebob(print_: bool = True):
+def ascii_spongebob(print_: bool = True) -> str:
+    """Get the ASCII SpongeBob without a speech bubble or message.
+
+    Args:
+        print_ (bool, optional): Whether to print using the `print` function. Defaults to True.
+
+    Returns:
+        multiline string containing ASCII SpongeBob
+    """
     out = "     " + _SPONGEBOB_ASCII
     if print_:
         print(out)

@@ -11,11 +11,18 @@ clean-build:
 	rm -rf dist
 	rm -rf spongebobsay.egg-info
 
+clean-docs:
+	rm -rf docs/site
+
 clean-test:
 	rm -f .coverage
 	rm -f coverage.xml
 	rm -rf htmlcov/
 	rm -rf .pytest_cache
+
+docs: clean-docs
+	cp README.md docs/docs/index.md
+	cd docs && mkdocs build
 
 lint:
 	black --check spongebobsay tests
