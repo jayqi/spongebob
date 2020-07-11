@@ -6,7 +6,7 @@ on:
   pull_request:
     paths:
       - 'r-pkg/**'
-      - '.github/workflows/r-pkg-tests.yml'
+      - '.github/workflows/tests-r-pkg.yml'
   schedule:
     # Run every Sunday
     - cron: '0 0 * * 0'
