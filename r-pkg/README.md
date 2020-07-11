@@ -1,10 +1,10 @@
 # spongebob : SPoNgeBOb-CAse cONveRSioN iN R
 
-[![CRAN\_Status\_Badge](https://www.r-pkg.org/badges/version-last-release/spongebob)](https://cran.r-project.org/package=spongebob) [![CRAN\_Download\_Badge](https://cranlogs.r-pkg.org/badges/grand-total/spongebob)](https://cran.r-project.org/package=spongebob) ![r-pkg-tests](https://github.com/jayqi/spongebob/workflows/r-pkg-tests/badge.svg?branch=master) [![codecov](https://codecov.io/gh/jayqi/spongebob/branch/master/graph/badge.svg?flag=r-pkg)](https://codecov.io/gh/jayqi/spongebob) [![Lifecycle: Maturing](https://img.shields.io/badge/lifecycle-maturing-blue.svg)](https://www.tidyverse.org/lifecycle/#maturing)
+[![CRAN\_Status\_Badge](https://www.r-pkg.org/badges/version-last-release/spongebob)](https://cran.r-project.org/package=spongebob) [![CRAN\_Download\_Badge](https://cranlogs.r-pkg.org/badges/grand-total/spongebob)](https://cran.r-project.org/package=spongebob) [![r-pkg-tests](https://github.com/jayqi/spongebob/workflows/r-pkg-tests/badge.svg?branch=master)](https://github.com/jayqi/spongebob/actions?query=workflow%3Ar-pkg-tests+branch%3Amaster) [![codecov](https://codecov.io/gh/jayqi/spongebob/branch/master/graph/badge.svg?flag=r-pkg)](https://codecov.io/gh/jayqi/spongebob) [![Lifecycle: Maturing](https://img.shields.io/badge/lifecycle-maturing-blue.svg)](https://www.tidyverse.org/lifecycle/#maturing)
 
 This R package's core is the function `tospongebob` that will convert text in R objects to [Mocking SpongeBob case](https://knowyourmeme.com/memes/mocking-spongebob). Additional features leverage it for even more fun.
 
-Also available [in Python](https://github.com/jayqi/spongebob/tree/master/py-pkg) or [as a CLI](https://github.com/jayqi/spongebob/tree/master/spongebobsay-cli).
+Also available [as a Python library](https://github.com/jayqi/spongebob/tree/master/py-pkg) or [as a CLI](https://github.com/jayqi/spongebob/tree/master/spongebobsay-cli).
 
 ## Installation. inSTAllATIoN.
 
