@@ -32,7 +32,9 @@ class WidthTooSmallError(ValueError):
     pass
 
 
-def _ascii_func_factory(left: str, right: str, top: str, bottom: str, tail: str, style: str):
+def _ascii_func_factory(
+    name: str, left: str, right: str, top: str, bottom: str, tail: str, style: str
+):
     def ascii_func(what: Any, print_: bool = True, width: Optional[int] = None) -> str:
         """Creates an ASCII Mocking SpongeBob with a message in a {style} bubble. The message is
         the string representation of the given input having been converted using
@@ -91,21 +93,21 @@ def _ascii_func_factory(left: str, right: str, top: str, bottom: str, tail: str,
 
         return out
 
+    ascii_func.__name__ = name
     ascii_func.__doc__ = ascii_func.__doc__.format(style=style, default_width=DEFAULT_WIDTH)
-
     return ascii_func
 
 
 spongebobsay = _ascii_func_factory(
-    left="|", right="|", top="-", bottom="-", tail="\\\\", style="speech"
+    name="spongebobsay", left="|", right="|", top="-", bottom="-", tail="\\\\", style="speech"
 )
 
 spongebobthink = _ascii_func_factory(
-    left="(", right=")", top="~", bottom="~", tail=" o", style="thought"
+    name="spongebobthink", left="(", right=")", top="~", bottom="~", tail=" o", style="thought"
 )
 
 spongebobwhisper = _ascii_func_factory(
-    left=":", right=":", top=".", bottom=".", tail=" .", style="whisper"
+    name="spongebobwhisper", left=":", right=":", top=".", bottom=".", tail=" .", style="whisper"
 )
 
 
