@@ -42,8 +42,7 @@ TEST_STRING = (
 
 @pytest.mark.parametrize("cmd_flags, expected_func", test_cases)
 def test_command(cmd_flags, expected_func):
-    """Test the CLI with each styling flag.
-    """
+    """Test the CLI with each styling flag."""
 
     result = CliRunner().invoke(app, cmd_flags + ["-s", RANDOM_SEED] + [TEST_STRING])
     assert result.exit_code == 0
@@ -56,8 +55,7 @@ def test_command(cmd_flags, expected_func):
 
 @pytest.mark.parametrize("cmd_flags, expected_func", test_cases)
 def test_command_python_m(cmd_flags, expected_func):
-    """Test the CLI using python -m invocation with each styling flag.
-    """
+    """Test the CLI using python -m invocation with each styling flag."""
     result = subprocess.run(
         ["python", "-m", "spongebobsay"] + cmd_flags + ["-s", str(RANDOM_SEED)] + [TEST_STRING],
         stdout=subprocess.PIPE,
@@ -73,8 +71,7 @@ def test_command_python_m(cmd_flags, expected_func):
 
 
 def test_random_seed():
-    """Test that setting a random seed consistently produces the same thing.
-    """
+    """Test that setting a random seed consistently produces the same thing."""
     output_set = set()
     for _ in range(10):
         result = CliRunner().invoke(app, ["-s", RANDOM_SEED] + [TEST_STRING])
@@ -84,8 +81,7 @@ def test_random_seed():
 
 
 def test_no_random_seed():
-    """Test that not setting a random seed does not consistently produces the same thing.
-    """
+    """Test that not setting a random seed does not consistently produces the same thing."""
     output_set = set()
     for _ in range(10):
         result = CliRunner().invoke(app, [TEST_STRING])

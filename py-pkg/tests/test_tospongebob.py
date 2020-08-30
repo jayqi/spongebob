@@ -31,8 +31,7 @@ def test_tospongebob_str(test_string):
 
 
 def test_tospongebob_object():
-    """Test that tospongebob works on attributes of objects.
-    """
+    """Test that tospongebob works on attributes of objects."""
 
     class QuestionAndAnswer:
         pass
@@ -74,8 +73,7 @@ def test_is_namedtuple_instance():
 
 
 def test_tospongebob_namedtuple():
-    """Test that tospongebob works on attributes of namedtuples.
-    """
+    """Test that tospongebob works on attributes of namedtuples."""
 
     class QuestionAndAnswer(NamedTuple):
         question: str
@@ -99,8 +97,7 @@ def test_tospongebob_namedtuple():
 
 
 def test_tospongebob_dataclass():
-    """Test that tospongebob works on attributes of objects.
-    """
+    """Test that tospongebob works on attributes of objects."""
 
     @dataclass
     class QuestionAndAnswer:
@@ -128,16 +125,14 @@ def test_tospongebob_dataclass():
 
 @pytest.mark.parametrize("input_type", [int, float, bool])
 def test_tospongebob_other_types(input_type):
-    """Test that tospongebob returns non-string types as-is.
-    """
+    """Test that tospongebob returns non-string types as-is."""
     x = input_type()
     assert tospongebob(x) == x
 
 
 @pytest.mark.parametrize("iterable_type", [list, tuple, set, frozenset, deque])
 def test_tospongebob_iterables(iterable_type):
-    """Test that tospongebob works with iterables.
-    """
+    """Test that tospongebob works with iterables."""
     test_data = ["who lives in a pineapple", "under the sea", "spongebob squarepants!"]
     iterable_instance = iterable_type(test_data)
     converted = tospongebob(iterable_instance)
@@ -161,8 +156,7 @@ def test_tospongebob_iterables_convert_by_group():
 
 
 def test_tospongebob_generator():
-    """Test that tospongebob works with generators.
-    """
+    """Test that tospongebob works with generators."""
     test_data = ["who lives in a pineapple", "under the sea", "spongebob squarepants!"]
     converted = tospongebob(x for x in test_data)
     assert isinstance(converted, GeneratorType)

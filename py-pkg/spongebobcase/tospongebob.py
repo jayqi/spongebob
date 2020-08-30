@@ -51,7 +51,8 @@ def tospongebob_str(x: str) -> str:
     length_seq = []
     while sum(length_seq) < len(alpha_inds):
         next_val = choices(
-            population=(1, 2, 3), weights=(0.5, 0.5 / _GOLDEN_RATIO, 0.5 / _GOLDEN_RATIO ** 2),
+            population=(1, 2, 3),
+            weights=(0.5, 0.5 / _GOLDEN_RATIO, 0.5 / _GOLDEN_RATIO ** 2),
         )[0]
         if sum(length_seq) + next_val <= len(alpha_inds):
             length_seq.append(next_val)

@@ -24,6 +24,9 @@ docs: clean-docs
 	cp README.md docs/docs/index.md
 	cd docs && mkdocs build
 
+format:
+	black spongebobcase tests
+
 lint:
 	black --check spongebobcase tests
 	flake8 spongebobcase tests

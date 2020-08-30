@@ -24,6 +24,9 @@ docs: clean-docs
 	cp README.md docs/docs/index.md
 	cd docs && mkdocs build
 
+format:
+	black spongebobsay tests
+
 lint:
 	black --check spongebobsay tests
 	flake8 spongebobsay tests
