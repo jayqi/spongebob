@@ -40,7 +40,7 @@ jobs:
       with:
         packages_dir: py-pkg/dist/
         user: __token__
-        password: ${{ secrets.PYPI_TEST_TOKEN }}
+        password: ${{ secrets.PYPI_TEST_TOKEN_SPONGEBOBCASE }}
         repository_url: https://test.pypi.org/legacy/
         skip_existing: true
 
@@ -62,7 +62,7 @@ jobs:
       with:
         packages_dir: py-pkg/dist/
         user: __token__
-        password: ${{ secrets.PYPI_PROD_TOKEN }}
+        password: ${{ secrets.PYPI_PROD_TOKEN_SPONGEBOBCASE }}
         skip_existing: false
 
     - name: Persist build artifacts
