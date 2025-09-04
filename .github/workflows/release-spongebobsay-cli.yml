@@ -37,7 +37,7 @@ jobs:
         make build
 
     - name: Publish to Test PyPI
-      uses: pypa/gh-action-pypi-publish@v1.3.0
+      uses: pypa/gh-action-pypi-publish@v1.13.0
       with:
         packages_dir: spongebobsay-cli/dist/
         user: __token__
@@ -59,7 +59,7 @@ jobs:
         TARGET_FOLDER: spongebobsay-cli/
 
     - name: Publish to Production PyPI
-      uses: pypa/gh-action-pypi-publish@v1.3.0
+      uses: pypa/gh-action-pypi-publish@v1.13.0
       with:
         packages_dir: spongebobsay-cli/dist/
         user: __token__
